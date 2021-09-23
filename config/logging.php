@@ -17,7 +17,7 @@ return [
     |
     */
 
-    'default' => env('LOG_CHANNEL', 'hiperprecios'),
+    'default' => env('LOG_CHANNEL', 'stack'),
 
     /*
     |--------------------------------------------------------------------------
@@ -101,7 +101,8 @@ return [
             'path' => storage_path('logs/laravel.log'),
         ],
 
-
+        /* ******************************** */
+        /* **** CUSTOM LOGGING SERVICE **** */
         'hiperprecios' => [
             'driver' => 'stack',
             'channels' => ['hiperprecios_errors', 'hiperprecios_debug'],
@@ -120,6 +121,8 @@ return [
             'level'  => 'debug',
             'path'   => storage_path('logs/debug.log'),
         ],
+        /* **** CUSTOM LOGGING SERVICE **** */
+        /* ******************************** */
     ],
 
 ];
