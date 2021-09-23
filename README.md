@@ -1,5 +1,5 @@
 <p align="center">
-    <img alt="GitHub Build" src="https://github.com/juanmcortez/HiperPrecios-v2/actions/workflows/Build.yml/badge.svg">
+    <!-- <img alt="GitHub Build" src="https://github.com/juanmcortez/HiperPrecios-v2/actions/workflows/Build.yml/badge.svg"> -->
     <img alt="GitHub tag (latest by date)" src="https://img.shields.io/github/v/tag/juanmcortez/HiperPrecios-v2?label=Version">
     <img alt="GitHub release (latest by date)" src="https://img.shields.io/github/v/release/juanmcortez/HiperPrecios-v2?label=Release">
 </p>
@@ -19,7 +19,7 @@
 </p>
 
 <p align="center">
-    <a href="https://github.com/juanmcortez/HiperPrecios-v2/blob/main/LICENSE">
+    <a href="https://github.com/juanmcortez/HiperPrecios-v2/blob/production/LICENSE">
         <img alt="GitHub license" src="https://img.shields.io/github/license/juanmcortez/HiperPrecios-v2?label=License" />
     </a>
 </p>
@@ -30,11 +30,11 @@ Coming Soon.
 
 ## Contributing
 
-Thank you for considering contributing to HiperPrecios! The contribution guide can be found in the [HiperPrecios Contribution Guide](https://github.com/juanmcortez/HiperPrecios-v2/blob/main/.github/CONTRIBUTING.md).
+Thank you for considering contributing to HiperPrecios! The contribution guide can be found in the [HiperPrecios Contribution Guide](https://github.com/juanmcortez/HiperPrecios-v2/blob/production/.github/CONTRIBUTING.md).
 
 ## Code of Conduct
 
-In order to ensure that the HiperPrecios community is welcoming to all, please review and abide by the [Code of Conduct](https://github.com/juanmcortez/HiperPrecios-v2/blob/main/.github/CODE_OF_CONDUCT.md).
+In order to ensure that the HiperPrecios community is welcoming to all, please review and abide by the [Code of Conduct](https://github.com/juanmcortez/HiperPrecios-v2/blob/production/.github/CODE_OF_CONDUCT.md).
 
 ## Security Vulnerabilities
 
@@ -42,4 +42,4 @@ If you discover a security vulnerability within HiperPrecios, please send an e-m
 
 ## License
 
-HiperPrecios is open-sourced software licensed under the [GNU General Public License v3.0](https://github.com/juanmcortez/HiperPrecios-v2/blob/main/LICENSE).
+HiperPrecios is open-sourced software licensed under the [GNU General Public License v3.0](https://github.com/juanmcortez/HiperPrecios-v2/blob/production/LICENSE).
