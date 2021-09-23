@@ -5,7 +5,8 @@
 /public/images
 /public/products
 /storage/*.key
-/storage/debugbar
+/storage/debugbar/
+/storage/debugbar/.gitignore
 /vendor
 .env
 .env.backup
