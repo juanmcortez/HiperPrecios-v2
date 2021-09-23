@@ -14,6 +14,7 @@ return [
     */
 
     'name' => env('APP_NAME', 'Laravel'),
+    'version' => env('APP_VERSION', 'v1.0'),
 
     /*
     |--------------------------------------------------------------------------
@@ -67,7 +68,9 @@ return [
     |
     */
 
-    'timezone' => 'UTC',
+    'timezone' => env('APP_TIMEZONE', 'UTC'),
+    'date_format' => env('APP_DATE_FORMAT', 'Y-m-d'),
+    'datetime_format' => env('APP_DATETIME_FORMAT', 'Y-m-d h:i:s'),
 
     /*
     |--------------------------------------------------------------------------
@@ -80,7 +83,7 @@ return [
     |
     */
 
-    'locale' => 'en',
+    'locale' => env('APP_LOCALE', 'en'),
 
     /*
     |--------------------------------------------------------------------------
@@ -106,7 +109,7 @@ return [
     |
     */
 
-    'faker_locale' => 'en_US',
+    'faker_locale' => env('FAK_LOCALE', 'en_US'),
 
     /*
     |--------------------------------------------------------------------------
