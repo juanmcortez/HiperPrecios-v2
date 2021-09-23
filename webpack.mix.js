@@ -23,7 +23,7 @@ mix.js('resources/js/hiperprecios.js', 'public/js')
         },
         postCss: [
             require('postcss-import'),
-            // require('tailwindcss'),
+            require('tailwindcss'),
             require('autoprefixer'),
         ]
     })
