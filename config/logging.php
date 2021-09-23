@@ -1,8 +1,8 @@
 <?php
 
-use Monolog\Handler\NullHandler;
-use Monolog\Handler\StreamHandler;
 use Monolog\Handler\SyslogUdpHandler;
+use Monolog\Handler\StreamHandler;
+use Monolog\Handler\NullHandler;
 
 return [
 
@@ -17,7 +17,7 @@ return [
     |
     */
 
-    'default' => env('LOG_CHANNEL', 'stack'),
+    'default' => env('LOG_CHANNEL', 'hiperprecios'),
 
     /*
     |--------------------------------------------------------------------------
@@ -99,6 +99,26 @@ return [
 
         'emergency' => [
             'path' => storage_path('logs/laravel.log'),
+        ],
+
+
+        'hiperprecios' => [
+            'driver' => 'stack',
+            'channels' => ['hiperprecios_errors', 'hiperprecios_debug'],
+            'ignore_exceptions' => false,
+        ],
+
+        'hiperprecios_errors' => [
+            'driver' => 'single',
+            'level'  => 'error',
+            'path'   => storage_path('logs/errors.log'),
+            'bubble' => false
+        ],
+
+        'hiperprecios_debug' => [
+            'driver' => 'single',
+            'level'  => 'debug',
+            'path'   => storage_path('logs/debug.log'),
         ],
     ],
 
