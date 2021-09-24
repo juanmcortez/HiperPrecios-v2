@@ -19,7 +19,7 @@ class CreateStoresTable extends Migration
             $table->string('storeShortName', 64)->index()->nullable();
             $table->string('storeFullName', 128)->nullable();
 
-            $table->longText('storeApiUrl')->default('https://www.storeapiurl.com.ar/');
+            $table->longText('storeApiUrl')->default('www.storeapiurl.com.ar/');
             $table->boolean('enableApiScrapping')->default(true);
             $table->boolean('isaVtexStore')->default(false);
 
