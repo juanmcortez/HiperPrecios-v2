@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Stores\StoreController;
 use App\Http\Controllers\Dashboard\LandingController;
 
 /*
@@ -15,3 +16,12 @@ use App\Http\Controllers\Dashboard\LandingController;
 */
 
 Route::get('/', [LandingController::class, 'index'])->name('dashboard');
+
+// Stores routes
+Route::prefix('/stores/list')->name('stores.')->group(function () {
+    Route::get('/',                 [StoreController::class, 'index'])->name('list');
+    Route::get('/show/{store}',     [StoreController::class, 'show'])->name('show');
+    Route::get('/edit/{store}',     [StoreController::class, 'edit'])->name('edit');
+    Route::post('/edit/{store}',    [StoreController::class, 'update'])->name('update');
+    Route::patch('/edit/{store}',   [StoreController::class, 'destroy'])->name('delete');
+});

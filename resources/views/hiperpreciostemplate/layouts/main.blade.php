@@ -28,8 +28,12 @@
 
 <body class="overflow-x-hidden text-xs antialiased lg:text-sm xl:text-base text-dark-700">
 
-    <main class="flex flex-col items-center justify-center w-full min-h-screen md:flex-row flex-nowrap">
-        {{ $slot }}
+    <main class="min-w-screen min-h-screen bg-gray-100 flex items-center justify-center font-sans overflow-hidden">
+        <div class="w-full lg:w-5/6">
+            <div class="bg-white shadow-md rounded my-6">
+                {{ $slot }}
+            </div>
+        </div>
     </main>
 
     <!-- Scripts -->
