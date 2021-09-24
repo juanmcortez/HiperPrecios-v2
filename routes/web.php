@@ -17,9 +17,11 @@ use App\Http\Controllers\Dashboard\LandingController;
 
 Route::get('/', [LandingController::class, 'index'])->name('dashboard');
 
-
-Route::get('/stores/list-detail', [StoreController::class, 'index'])->name('stores.list');
-Route::get('/stores/list-detail/show/{store}', [StoreController::class, 'show'])->name('stores.show');
-Route::get('/stores/list-detail/edit/{store}', [StoreController::class, 'edit'])->name('stores.edit');
-Route::post('/stores/list-detail/edit/{store}', [StoreController::class, 'update'])->name('stores.update');
-Route::patch('/stores/list-detail/delete/{store}', [StoreController::class, 'destroy'])->name('stores.delete');
+// Stores routes
+Route::prefix('/stores/list')->name('stores.')->group(function () {
+    Route::get('/',                 [StoreController::class, 'index'])->name('list');
+    Route::get('/show/{store}',     [StoreController::class, 'show'])->name('show');
+    Route::get('/edit/{store}',     [StoreController::class, 'edit'])->name('edit');
+    Route::post('/edit/{store}',    [StoreController::class, 'update'])->name('update');
+    Route::patch('/edit/{store}',   [StoreController::class, 'destroy'])->name('delete');
+});
