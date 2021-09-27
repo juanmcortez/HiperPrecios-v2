@@ -25,5 +25,5 @@ Route::prefix('/stores/list')->name('stores.')->group(function () {
     Route::get('/show/{store}',     [StoreController::class, 'show'])->name('show');
     Route::get('/edit/{store}',     [StoreController::class, 'edit'])->name('edit');
     Route::post('/edit/{store}',    [StoreController::class, 'update'])->name('update');
-    Route::patch('/edit/{store}',   [StoreController::class, 'destroy'])->name('delete');
+    Route::patch('/remove/{store}', [StoreController::class, 'destroy'])->name('delete');
 });
