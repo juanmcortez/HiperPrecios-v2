@@ -1,8 +1,8 @@
 <x-main-layout>
     <h1 class="py-4 px-6 text-xl font-bold text-gray-700 mb-2">
-        {{ __('Editing :name Store', ['name' => $store->storeFullName]) }}
+        {{ __('New Store') }}
     </h1>
-    <form method="POST" action="{{ route('stores.update', ['store' => $store->id]) }}">
+    <form method="POST" action="{{ route('stores.store') }}">
         @csrf
         @method('POST')
         <table class="min-w-max w-full table-auto" border="0" cellpadding="0" cellspacing="0">
@@ -18,22 +18,22 @@
             <tbody class="text-gray-600 text-sm font-light">
                 <tr class="border-b border-gray-200 hover:bg-gray-100">
                     <td class="py-4 px-6 text-left whitespace-nowrap">
-                        <input name="storeShortName" type="text" maxlength="64" value="{{ $store->storeShortName }}" />
+                        <input name="storeShortName" type="text" maxlength="64" value="{{ old('storeShortName') }}" />
                     </td>
                     <td class="py-4 px-6 text-left whitespace-nowrap">
-                        <input name="storeFullName" type="text" maxlength="128" value="{{ $store->storeFullName }}" />
+                        <input name="storeFullName" type="text" maxlength="128" value="{{ old('storeFullName') }}" />
                     </td>
                     <td class="py-4 px-6 text-left whitespace-nowrap">
-                        <input name="storeApiUrl" type="text" maxlength="256" value="{{ $store->storeApiUrl }}" />
+                        <input name="storeApiUrl" type="text" maxlength="256" value="{{ old('storeApiUrl') }}" />
                     </td>
                     <td class="py-4 px-6 text-center">
                         <input type="hidden" name="enableApiScrapping" value="off">
-                        <input name="enableApiScrapping" type="checkbox" @if ($store->enableApiScrapping) checked @endif
-                        />
+                        <input name="enableApiScrapping" type="checkbox" @if (old('enableApiScrapping')=="on" ) checked
+                            @endif />
                     </td>
                     <td class="py-4 px-6 text-center">
                         <input type="hidden" name="isaVtexStore" value="off">
-                        <input name="isaVtexStore" type="checkbox" @if ($store->isaVtexStore) checked @endif />
+                        <input name="isaVtexStore" type="checkbox" @if (old('isaVtexStore')=="on" ) checked @endif />
                     </td>
                 </tr>
             </tbody>
@@ -47,7 +47,7 @@
                         </button>
                     </td>
                     <td class="py-4 px-6 text-center">
-                        <a href="{{ route('stores.show', ['store' => $store->id]) }}"
+                        <a href="{{ route('stores.list') }}"
                             class="px-4 py-2 rounded-md text-sm font-medium border-0 focus:outline-none focus:ring transition text-red-600 bg-red-50 hover:text-red-800 hover:bg-red-100 active:bg-red-200 focus:ring-red-300">
                             <i class="fas fa-times"></i> {{ __('Cancel') }}
                         </a>

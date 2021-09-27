@@ -1,11 +1,11 @@
 <x-main-layout>
     <h1 class="py-4 px-6 text-xl font-bold text-gray-700 mb-2">
-        {{ __('Viewing :name', ['name' => $store->storeFullName]) }}
+        {{ __('Viewing :name Store', ['name' => $store->storeFullName]) }}
     </h1>
     <table class="min-w-max w-full table-auto" border="0" cellpadding="0" cellspacing="0">
         <thead>
             <tr class="bg-gray-200 text-gray-600 uppercase text-sm leading-normal">
-                <th class="py-4 px-6 text-left">{{ __('Systen Name') }}</th>
+                <th class="py-4 px-6 text-left">{{ __('System Name') }}</th>
                 <th class="py-4 px-6 text-left">{{ __('Store Name') }}</th>
                 <th class="py-4 px-6 text-left">{{ __('Store API Url') }}</th>
                 <th class="py-4 px-6 text-center">{{ __('Get products and prices?') }}</th>
@@ -27,15 +27,15 @@
                 </td>
                 <td class="py-4 px-6 text-center">
                     <div class="flex item-center justify-center">
-                        <a href="{{ route('stores.edit', ['store' => $store->id]) }}"
+                        <a href="{{ route('stores.edit', ['store' => $store->id]) }}" title="{{ __('Edit the store') }}"
                             class="w-4 mr-2 transform hover:text-green-500 hover:scale-110 duration-300">
                             <i class="fas fa-edit"></i>
                         </a>
                         <form method="POST" action="{{ route('stores.delete', ['store' => $store->id]) }}">
                             @csrf
                             @method('PATCH')
-                            <button type="submit"
-                                class="w-4 mr-2 transform hover:text-red-500 hover:scale-110 duration-300">
+                            <button type="submit" title="{{ __('Delete the store') }}"
+                                class="w-4 transform hover:text-red-500 hover:scale-110 duration-300">
                                 <i class="fas fa-trash"></i>
                             </button>
                         </form>

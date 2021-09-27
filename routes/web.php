@@ -20,6 +20,8 @@ Route::get('/', [LandingController::class, 'index'])->name('dashboard');
 // Stores routes
 Route::prefix('/stores/list')->name('stores.')->group(function () {
     Route::get('/',                 [StoreController::class, 'index'])->name('list');
+    Route::get('/new/',             [StoreController::class, 'create'])->name('create');
+    Route::post('/new/',            [StoreController::class, 'store'])->name('store');
     Route::get('/show/{store}',     [StoreController::class, 'show'])->name('show');
     Route::get('/edit/{store}',     [StoreController::class, 'edit'])->name('edit');
     Route::post('/edit/{store}',    [StoreController::class, 'update'])->name('update');

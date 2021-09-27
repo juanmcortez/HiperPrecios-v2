@@ -1,5 +1,7 @@
 <x-main-layout>
-    <h1 class="py-4 px-6 text-xl font-bold text-gray-700 mb-2">Stores list</h1>
+    <h1 class="py-4 px-6 text-xl font-bold text-gray-700 mb-2">
+        {{ __('Stores List') }}
+    </h1>
     <table class="min-w-max w-full table-auto" border="0" cellpadding="0" cellspacing="0">
         <thead>
             <tr class="bg-gray-200 text-gray-600 uppercase text-sm leading-normal">
@@ -24,15 +26,19 @@
                 </td>
                 <td class="py-4 px-6 text-center">
                     <div class="flex item-center justify-center">
-                        <a href="{{ route('stores.show', ['store' => $store->id]) }}"
-                            class="w-4 mr-2 transform hover:text-yellow-500 hover:scale-110 duration-300">
+                        <a href="{{ route('stores.show', ['store' => $store->id]) }}" title="{{ __('Store details') }}"
+                            class="w-4 mr-3 transform hover:text-yellow-500 hover:scale-110 duration-300">
                             <i class="fas fa-eye"></i>
+                        </a>
+                        <a href="{{ route('stores.edit', ['store' => $store->id]) }}" title="{{ __('Edit the store') }}"
+                            class="w-4 mr-2 transform hover:text-green-500 hover:scale-110 duration-300">
+                            <i class="fas fa-edit"></i>
                         </a>
                         <form method="POST" action="{{ route('stores.delete', ['store' => $store->id]) }}">
                             @csrf
                             @method('PATCH')
-                            <button type="submit"
-                                class="w-4 mr-2 transform hover:text-red-500 hover:scale-110 duration-300">
+                            <button type="submit" title="{{ __('Delete the store') }}"
+                                class="w-4 transform hover:text-red-500 hover:scale-110 duration-300">
                                 <i class="fas fa-trash"></i>
                             </button>
                         </form>
@@ -47,5 +53,16 @@
             </tr>
             @endforelse
         </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="4" class="py-4 px-6 text-center">&nbsp;</td>
+                <td class="py-4 px-6 text-center">
+                    <a href="{{ route('stores.create') }}"
+                        class="px-4 py-2 rounded-md text-sm font-medium border-0 focus:outline-none focus:ring transition text-blue-600 bg-blue-50 hover:text-blue-800 hover:bg-blue-100 active:bg-blue-200 focus:ring-blue-300">
+                        <i class="fas fa-plus-circle"></i> {{ __('New Store') }}
+                    </a>
+                </td>
+            </tr>
+        </tfoot>
     </table>
 </x-main-layout>
