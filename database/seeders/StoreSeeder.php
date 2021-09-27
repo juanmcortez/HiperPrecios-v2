@@ -30,8 +30,8 @@ class StoreSeeder extends Seeder
                 'storeShortName'        => $store[0],
                 'storeFullName'         => $store[1],
                 'storeApiUrl'           => $store[2],
-                'enableApiScrapping'    => false,
-                'isaVtexStore'          => true,
+                'enableApiScrapping'    => "off",
+                'isaVtexStore'          => "on",
             ]);
         }
     }
