@@ -15,8 +15,12 @@ class StoreController extends Controller
      */
     public function index()
     {
+        //
+        $title          = __("Stores list");
+        $description    = __("Here is the list of stores available in the system");
+        //
         $storesList = Store::orderBy('storeFullName')->get();
-        return view('store.index', compact('storesList'));
+        return view('store.index', compact('storesList', 'title', 'description'));
     }
 
     /**
@@ -26,7 +30,11 @@ class StoreController extends Controller
      */
     public function create()
     {
-        return view('store.create');
+        //
+        $title          = __("New Store");
+        $description    = __("Use this section to create a new store.");
+        //
+        return view('store.create', compact('title', 'description'));
     }
 
     /**
@@ -74,7 +82,11 @@ class StoreController extends Controller
      */
     public function show(Store $store)
     {
-        return view('store.show', compact('store'));
+        //
+        $title          = __("Viewing :name Store", ['name' => $store->storeFullName]);
+        $description    = __("Viewing :name store details.", ['name' => $store->storeFullName]);
+        //
+        return view('store.show', compact('store', 'title', 'description'));
     }
 
     /**
@@ -85,7 +97,11 @@ class StoreController extends Controller
      */
     public function edit(Store $store)
     {
-        return view('store.edit', compact('store'));
+        //
+        $title          = __("Editing :name Store", ['name' => $store->storeFullName]);
+        $description    = __("Editing :name store details.", ['name' => $store->storeFullName]);
+        //
+        return view('store.edit', compact('store', 'title', 'description'));
     }
 
     /**

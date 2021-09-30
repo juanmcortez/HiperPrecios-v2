@@ -15,7 +15,11 @@ class LandingController extends Controller
      */
     public function index()
     {
-        return view('dashboard.index');
+        //
+        $title          = __("Coming Soon");
+        $description    = __("Coming Soon");
+        //
+        return view('dashboard.index', compact('title', 'description'));
     }
 
     /**
@@ -25,6 +29,9 @@ class LandingController extends Controller
      */
     public function create()
     {
+        //
+        $title          = __("");
+        $description    = __("");
         //
     }
 
@@ -48,6 +55,9 @@ class LandingController extends Controller
     public function show(Landing $landing)
     {
         //
+        $title          = __("");
+        $description    = __("");
+        //
     }
 
     /**
@@ -58,6 +68,9 @@ class LandingController extends Controller
      */
     public function edit(Landing $landing)
     {
+        //
+        $title          = __("");
+        $description    = __("");
         //
     }
 
