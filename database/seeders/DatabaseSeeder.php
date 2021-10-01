@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Database\Seeders\StoreSeeder;
+use Database\Seeders\CategorySeeder;
 
 class DatabaseSeeder extends Seeder
 {
@@ -14,8 +15,10 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // Seed the stores.
-        $stores = new StoreSeeder;
-        $stores->run();
+        // Run all the seeds.
+        $this->call([
+            StoreSeeder::class,         // Seed the stores.
+            CategorySeeder::class,      // Seed the product categories.
+        ]);
     }
 }
