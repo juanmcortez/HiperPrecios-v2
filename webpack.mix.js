@@ -12,7 +12,7 @@ const mix = require('laravel-mix');
  */
 
 mix.js('resources/js/hiperprecios.js', 'public/js')
-    .extract(['lodash', 'axios'])
+    .extract(['lodash', 'axios', 'alpinejs'])
     .sass('resources/scss/hiperprecios.scss', 'public/css')
     .sass('resources/scss/theme.scss', 'public/css')
     .sass('resources/scss/theme_print.scss', 'public/css')
