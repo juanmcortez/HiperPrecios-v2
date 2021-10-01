@@ -32,6 +32,9 @@
 
     <main class="min-w-screen min-h-screen bg-gray-100 flex items-start justify-center font-sans overflow-hidden">
         <div class="w-full p-6">
+
+            <x-menus.top />
+
             <div class="bg-white shadow-md rounded">
                 {{ $slot }}
             </div>

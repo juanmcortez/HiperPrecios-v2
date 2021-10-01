@@ -1,5 +1,5 @@
 @if (session('info') || session('success') || session('warning') || $errors->any())
-<div class="absolute right-0 top-0 m-3">
+<div class="absolute right-0 top-0 m-3 z-50">
     @if (session('info'))
     <div class="flex items-center justify-center bg-blue-400 border-l-4 border-blue-600 py-2 px-3 shadow-md">
         <div class="text-white rounded-full mt-0.5 mr-3"><i class="text-xl fas fa-info-circle"></i></div>
