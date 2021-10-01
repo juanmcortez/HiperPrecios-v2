@@ -1,7 +1,10 @@
 <x-main-layout>
-    <h1 class="py-4 px-6 text-xl font-bold text-gray-700 mb-2">
-        {{ __('Viewing :name Store', ['name' => $store->storeFullName]) }}
-    </h1>
+    {{-- Default blocks --}}
+    <x-slot name="title">{!! $title !!}</x-slot>
+    <x-slot name="description">{!! $description !!}</x-slot>
+    {{-- Page Title --}}
+    <h1 class="py-4 px-6 text-xl font-bold text-gray-700 mb-2">{!! $title !!}</h1>
+    {{-- Page Content --}}
     <table class="min-w-max w-full table-auto" border="0" cellpadding="0" cellspacing="0">
         <thead>
             <tr class="bg-gray-200 text-gray-600 uppercase text-sm leading-normal">
