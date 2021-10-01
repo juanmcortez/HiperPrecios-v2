@@ -32,7 +32,14 @@
         {{-- If we show the show button we are seeing a lot of items --}}
         @foreach ($columnContents as $content)
         <tr class="border-b border-gray-200 hover:bg-gray-100">
+            @switch($routeBtn)
+            @case('stores')
+            <x-tables.rows.stores :items="$content" disabled readonly />
+            @break
+            @case('categories')
             <x-tables.rows.categories :items="$content" disabled readonly />
+            @break
+            @endswitch
 
             <x-tables.rows.buttons :showBtn="$enableShow" :editBtn="$enableEdit" :deleteBtn="$enableDelete"
                 routeName="{{ $routeBtn }}" paramName="{{ $paramBtn }}" itemId="{{ $content->id }}" />
@@ -41,7 +48,14 @@
         @else
         {{-- If not we are seeing a single item --}}
         <tr class="border-b border-gray-200 hover:bg-gray-100">
+            @switch($routeBtn)
+            @case('stores')
+            <x-tables.rows.stores :items="$columnContents" disabled readonly />
+            @break
+            @case('categories')
             <x-tables.rows.categories :items="$columnContents" disabled readonly />
+            @break
+            @endswitch
 
             <x-tables.rows.buttons :editBtn="$enableEdit" :deleteBtn="$enableDelete" routeName="{{ $routeBtn }}"
                 paramName="{{ $paramBtn }}" itemId="{{ $columnContents->id }}" />
