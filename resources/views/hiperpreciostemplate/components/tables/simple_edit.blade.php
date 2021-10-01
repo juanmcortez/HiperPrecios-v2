@@ -21,13 +21,27 @@
     @empty ($columnContents)
     <tbody class="text-gray-600 text-sm font-light">
         <tr class="border-b border-gray-200 hover:bg-gray-100">
+            @switch($routeBtn)
+            @case('stores')
+            <x-tables.rows.stores_edit />
+            @break
+            @case('categories')
             <x-tables.rows.categories_edit />
+            @break
+            @endswitch
         </tr>
     </tbody>
     @else
     <tbody class="text-gray-600 text-sm font-light">
         <tr class="border-b border-gray-200 hover:bg-gray-100">
+            @switch($routeBtn)
+            @case('stores')
+            <x-tables.rows.stores_edit :items="$columnContents" />
+            @break
+            @case('categories')
             <x-tables.rows.categories_edit :items="$columnContents" />
+            @break
+            @endswitch
         </tr>
     </tbody>
     @endempty

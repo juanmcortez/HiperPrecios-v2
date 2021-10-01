@@ -21,7 +21,7 @@
 @if($editBtn)
 <td class="py-4 px-0 text-center w-10 align-top">
     <a href="{{ route("$routeName.edit", ["$paramName" => $itemId]) }}" title="{{ __("Edit item") }}"
-        class="w-4 transform hover:text-yellow-500 hover:scale-110 duration-300">
+        class="w-4 transform hover:text-green-500 hover:scale-110 duration-300">
         <i class="fas fa-edit"></i>
     </a>
 </td>

@@ -16,11 +16,11 @@
 </td>
 <td class="py-4 px-6 text-center align-top">
     <input type="hidden" name="searchable" value="off">
-    <input type="checkbox" name="searchable" @if (old('searchable')=="on" ) checked @endif />
+    <input type="checkbox" name="searchable" @if (old('searchable')=="on" ) checked @endif class="mt-3" />
 </td>
 <td class="py-4 px-6 text-center align-top">
     <input type="hidden" name="enabled" value="off">
-    <input type="checkbox" name="enabled" @if (old('enabled')=="on" ) checked @endif />
+    <input type="checkbox" name="enabled" @if (old('enabled')=="on" ) checked @endif class="mt-3" />
 </td>
 
 @else
@@ -36,11 +36,11 @@
 </td>
 <td class="py-4 px-6 text-center align-top">
     <input type="hidden" name="searchable" value="off">
-    <input type="checkbox" name="searchable" @if ($items->searchable) checked @endif />
+    <input type="checkbox" name="searchable" @if ($items->searchable) checked @endif class="mt-3" />
 </td>
 <td class="py-4 px-6 text-center align-top">
     <input type="hidden" name="enabled" value="off">
-    <input type="checkbox" name="enabled" @if ($items->enabled) checked @endif />
+    <input type="checkbox" name="enabled" @if ($items->enabled) checked @endif class="mt-3" />
 </td>
 
 @endempty

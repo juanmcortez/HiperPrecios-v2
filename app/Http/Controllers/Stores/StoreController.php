@@ -19,8 +19,14 @@ class StoreController extends Controller
         $title          = __("Stores list");
         $description    = __("Here is the list of stores available in the system");
         //
-        $storesList = Store::orderBy('storeFullName')->get();
-        return view('store.index', compact('storesList', 'title', 'description'));
+        $storesList = Store::orderBy('storeFullName')->paginate(10);
+        $tableColumnHeaders = [
+            'Store Name',
+            'Store API Url',
+            'Get products and prices?',
+            'Is a VTEX Store?',
+        ];
+        return view('store.index', compact('storesList', 'tableColumnHeaders', 'title', 'description'));
     }
 
     /**
@@ -34,7 +40,15 @@ class StoreController extends Controller
         $title          = __("New Store");
         $description    = __("Use this section to create a new store.");
         //
-        return view('store.create', compact('title', 'description'));
+        $tableColumnHeaders = [
+            'System Name',
+            'Store Name',
+            'Store API Url',
+            'Get products and prices?',
+            'Is a VTEX Store?',
+        ];
+        //
+        return view('store.create', compact('tableColumnHeaders', 'title', 'description'));
     }
 
     /**
@@ -86,7 +100,14 @@ class StoreController extends Controller
         $title          = __("Viewing :name Store", ['name' => $store->storeFullName]);
         $description    = __("Viewing :name store details.", ['name' => $store->storeFullName]);
         //
-        return view('store.show', compact('store', 'title', 'description'));
+        $tableColumnHeaders = [
+            'Store Name',
+            'Store API Url',
+            'Get products and prices?',
+            'Is a VTEX Store?',
+        ];
+        //
+        return view('store.show', compact('store', 'tableColumnHeaders', 'title', 'description'));
     }
 
     /**
@@ -101,7 +122,15 @@ class StoreController extends Controller
         $title          = __("Editing :name Store", ['name' => $store->storeFullName]);
         $description    = __("Editing :name store details.", ['name' => $store->storeFullName]);
         //
-        return view('store.edit', compact('store', 'title', 'description'));
+        $tableColumnHeaders = [
+            'System Name',
+            'Store Name',
+            'Store API Url',
+            'Get products and prices?',
+            'Is a VTEX Store?',
+        ];
+        //
+        return view('store.edit', compact('store', 'tableColumnHeaders', 'title', 'description'));
     }
 
     /**

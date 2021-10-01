@@ -78,8 +78,8 @@ class CategoryController extends Controller
 
         // check if it's new
         $message = ($category->wasRecentlyCreated)
-            ? '<strong>:name</strong> store, created successfully!'
-            : '<strong>:name</strong> store already exists. Nothing changed!';
+            ? '<strong>:name</strong> category, created successfully!'
+            : '<strong>:name</strong> category already exists. Nothing changed!';
         $status = ($category->wasRecentlyCreated)
             ? 'success'
             : 'info';
@@ -87,7 +87,7 @@ class CategoryController extends Controller
         // redirect
         return redirect()
             ->route('categories.list')
-            ->with($status, __($message, ['name' => $category->storeFullName,]));
+            ->with($status, __($message, ['name' => $category->name,]));
     }
 
     /**
