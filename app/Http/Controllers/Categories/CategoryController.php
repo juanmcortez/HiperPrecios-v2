@@ -16,7 +16,7 @@ class CategoryController extends Controller
     public function index()
     {
         //
-        $title          = __("Product's Categories List");
+        $title          = __("Product's categories list");
         $description    = __("Here is the list of product's categories");
         //
         $categoriesList = Category::orderBy('name')->paginate(10);
@@ -39,7 +39,7 @@ class CategoryController extends Controller
     public function create()
     {
         //
-        $title          = __("New Category");
+        $title          = __("New category");
         $description    = __("Use this section to create a new category.");
         //
         $tableColumnHeaders = [
@@ -99,8 +99,8 @@ class CategoryController extends Controller
     public function show(Category $category)
     {
         //
-        $title          = __("Viewing \":name\" Category", ['name' => $category->name]);
-        $description    = __("Viewing \":name\" Category details.", ['name' => $category->name]);
+        $title          = __("Viewing \":name\" category", ['name' => $category->name]);
+        $description    = __("Viewing \":name\" category details.", ['name' => $category->name]);
         //
         $tableColumnHeaders = [
             'Category Name',
@@ -122,8 +122,8 @@ class CategoryController extends Controller
     public function edit(Category $category)
     {
         //
-        $title          = __("Editing \":name\" Category", ['name' => $category->name]);
-        $description    = __("Editing \":name\" Category details.", ['name' => $category->name]);
+        $title          = __("Editing \":name\" category", ['name' => $category->name]);
+        $description    = __("Editing \":name\" category details.", ['name' => $category->name]);
         //
         $tableColumnHeaders = [
             'Category Name',

@@ -37,7 +37,7 @@ class StoreController extends Controller
     public function create()
     {
         //
-        $title          = __("New Store");
+        $title          = __("New store");
         $description    = __("Use this section to create a new store.");
         //
         $tableColumnHeaders = [
@@ -97,8 +97,8 @@ class StoreController extends Controller
     public function show(Store $store)
     {
         //
-        $title          = __("Viewing :name Store", ['name' => $store->storeFullName]);
-        $description    = __("Viewing :name store details.", ['name' => $store->storeFullName]);
+        $title          = __("Viewing \":name\" store", ['name' => $store->storeFullName]);
+        $description    = __("Viewing \":name\" store details.", ['name' => $store->storeFullName]);
         //
         $tableColumnHeaders = [
             'Store Name',
@@ -119,8 +119,8 @@ class StoreController extends Controller
     public function edit(Store $store)
     {
         //
-        $title          = __("Editing :name Store", ['name' => $store->storeFullName]);
-        $description    = __("Editing :name store details.", ['name' => $store->storeFullName]);
+        $title          = __("Editing \":name\" store", ['name' => $store->storeFullName]);
+        $description    = __("Editing \":name\" store details.", ['name' => $store->storeFullName]);
         //
         $tableColumnHeaders = [
             'System Name',
