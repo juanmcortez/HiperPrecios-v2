@@ -6,13 +6,13 @@
 @empty($items)
 
 <td class="py-4 px-6 text-left whitespace-nowrap align-top">
-    <input type="text" name="name" maxlength="64" value="{{ old('name') }}" />
+    <input type="text" name="name" maxlength="64" value="{{ old('name') }}" class="w-full" />
 </td>
 <td class="py-4 px-6 text-left whitespace-nowrap align-top">
-    <input type="text" name="slug" maxlength="64" value="{{ old('slug') }}" />
+    <input type="text" name="slug" maxlength="64" value="{{ old('slug') }}" class="w-full" />
 </td>
 <td class="py-4 px-6 text-left align-top">
-    <textarea name="similar" rows="10">{{ old('similar') }}</textarea>
+    <textarea name="similar" rows="10" class="w-full">{{ old('similar') }}</textarea>
 </td>
 <td class="py-4 px-6 text-center align-top">
     <input type="hidden" name="searchable" value="off">
@@ -26,13 +26,13 @@
 @else
 
 <td class="py-4 px-6 text-left whitespace-nowrap align-top">
-    <input type="text" name="name" maxlength="64" value="{{ $items->name }}" />
+    <input type="text" name="name" maxlength="64" value="{{ $items->name }}" class="w-full" />
 </td>
 <td class="py-4 px-6 text-left whitespace-nowrap align-top">
-    <input type="text" name="slug" maxlength="64" value="{{ $items->slug }}" />
+    <input type="text" name="slug" maxlength="64" value="{{ $items->slug }}" class="w-full" />
 </td>
 <td class="py-4 px-6 text-left align-top">
-    <textarea name="similar" rows="10">{{ $items->similar }}</textarea>
+    <textarea name="similar" rows="10" class="w-full">{{ $items->similar }}</textarea>
 </td>
 <td class="py-4 px-6 text-center align-top">
     <input type="hidden" name="searchable" value="off">
