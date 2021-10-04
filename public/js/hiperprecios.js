@@ -92,7 +92,7 @@ __webpack_require__.r(__webpack_exports__);
 },
 /******/ __webpack_require__ => { // webpackRuntimeModules
 /******/ var __webpack_exec__ = (moduleId) => (__webpack_require__(__webpack_require__.s = moduleId))
-/******/ __webpack_require__.O(0, ["css/theme_print","css/theme","css/hiperprecios","/js/vendor"], () => (__webpack_exec__("./resources/js/hiperprecios.js"), __webpack_exec__("./resources/scss/hiperprecios.scss"), __webpack_exec__("./resources/scss/theme.scss"), __webpack_exec__("./resources/scss/theme_print.scss")));
+/******/ __webpack_require__.O(0, ["css/hiperprecios","css/theme_print","css/theme","/js/vendor"], () => (__webpack_exec__("./resources/js/hiperprecios.js"), __webpack_exec__("./resources/scss/hiperprecios.scss"), __webpack_exec__("./resources/scss/theme.scss"), __webpack_exec__("./resources/scss/theme_print.scss")));
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
