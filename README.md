@@ -1,5 +1,5 @@
 <p align="center">
-    <!-- <img alt="GitHub Build" src="https://github.com/juanmcortez/HiperPrecios-v2/actions/workflows/Build.yml/badge.svg"> -->
+    <img alt="GitHub Build" src="https://github.com/juanmcortez/HiperPrecios-v2/actions/workflows/hiperprecios.yml/badge.svg">
     <img alt="GitHub tag (latest by date)" src="https://img.shields.io/github/v/tag/juanmcortez/HiperPrecios-v2?label=Version">
     <img alt="GitHub release (latest by date)" src="https://img.shields.io/github/v/release/juanmcortez/HiperPrecios-v2?label=Release">
 </p>

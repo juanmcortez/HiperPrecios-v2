@@ -1,7 +1,7 @@
 name: HiperPreciosv2
 on:
   push:
-    branches: [ development ]
+    branches: [ production ]
   pull_request:
     branches: [ development ]
 
@@ -32,8 +32,6 @@ jobs:
         run: mkdir storage/app/public/fonts
       - name: Generate folder
         run: mkdir storage/app/public/fonts/vendor
-      - name: Generate folder
-        run: mkdir database/testing
 
       - name: Generate links
         run: php artisan storage:link
