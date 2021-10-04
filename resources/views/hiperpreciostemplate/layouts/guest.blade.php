@@ -13,10 +13,6 @@
     </title>
     <meta name="description" content="{{ isset($description) ? $description : '' }}">
 
-    <!-- Fonts -->
-    <link rel="dns-prefetch" href="//fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-
     <!-- Styles -->
     <link href="{{ mix('css/hiperprecios.css') }}" rel="stylesheet" />
     <link href="{{ mix('css/theme.css') }}" rel="stylesheet" />

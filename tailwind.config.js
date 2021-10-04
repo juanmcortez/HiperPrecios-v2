@@ -16,7 +16,7 @@ module.exports = {
     theme: {
         extend: {
             fontFamily: {
-                sans: ['Poppins', ...defaultTheme.fontFamily.sans],
+                sans: ['Amiko', ...defaultTheme.fontFamily.sans],
             },
             fontSize: {
                 'xxs': ['0.625rem', '0.75rem'],
@@ -34,5 +34,8 @@ module.exports = {
         },
     },
 
-    plugins: [require('@tailwindcss/forms')],
+    plugins: [
+        require('@tailwindcss/typography'),
+        require('@tailwindcss/forms')
+    ],
 };

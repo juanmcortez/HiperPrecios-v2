@@ -123,9 +123,9 @@
 /******/ 		// [resolve, reject, Promise] = chunk loading, 0 = chunk loaded
 /******/ 		var installedChunks = {
 /******/ 			"/js/manifest": 0,
+/******/ 			"css/hiperprecios": 0,
 /******/ 			"css/theme_print": 0,
-/******/ 			"css/theme": 0,
-/******/ 			"css/hiperprecios": 0
+/******/ 			"css/theme": 0
 /******/ 		};
 /******/ 		
 /******/ 		// no chunk on demand loading
