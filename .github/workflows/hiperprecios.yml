@@ -1,7 +1,7 @@
 name: HiperPreciosv2
 on:
   push:
-    branches: [ development ]
+    branches: [ production ]
   pull_request:
     branches: [ development ]
 
