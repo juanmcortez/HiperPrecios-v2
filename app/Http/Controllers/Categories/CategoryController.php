@@ -2,12 +2,26 @@
 
 namespace App\Http\Controllers\Categories;
 
+use App\Services\Categories\CategoryService;
 use App\Models\Categories\Category;
 use App\Http\Requests\Categories\CategoryRequest;
 use App\Http\Controllers\Controller;
 
 class CategoryController extends Controller
 {
+    protected $categoryService;
+
+    /**
+     * Instantiate a new service instance
+     *
+     * @param CategoryService $categoryService
+     */
+    public function __construct(CategoryService $categoryService)
+    {
+        $this->categoryService = $categoryService;
+    }
+
+
     /**
      * Display a listing of the resource.
      *
@@ -20,13 +34,7 @@ class CategoryController extends Controller
         $description    = __("Here is the list of product's categories");
         //
         $categoriesList = Category::orderBy('name')->paginate(10);
-        $tableColumnHeaders = [
-            'Category Name',
-            'Category Slug',
-            'Similar To This Category',
-            'Searchable?',
-            'Enabled?'
-        ];
+        $tableColumnHeaders = $this->categoryService->viewTableColumnsHeader();
         //
         return view('category.index', compact('categoriesList', 'tableColumnHeaders', 'title', 'description'));
     }
@@ -42,13 +50,7 @@ class CategoryController extends Controller
         $title          = __("New category");
         $description    = __("Use this section to create a new category.");
         //
-        $tableColumnHeaders = [
-            'Category Name',
-            'Category Slug',
-            'Similar To This Category',
-            'Searchable?',
-            'Enabled?'
-        ];
+        $tableColumnHeaders = $this->categoryService->viewTableColumnsHeader();
         //
         return view('category.create', compact('tableColumnHeaders', 'title', 'description'));
     }
@@ -61,28 +63,8 @@ class CategoryController extends Controller
      */
     public function store(CategoryRequest $request)
     {
-        // Store data if
-        $category = Category::firstOrCreate(
-            // Find the model if these fields exist
-            [
-                'name' => $request->input('name'),
-                'slug' => $request->input('slug'),
-            ],
-            // If not, create record with previous values and add the following
-            [
-                'similar' => $request->input('similar'),
-                'searchable' => $request->input('searchable'),
-                'enabled' => $request->input('enabled'),
-            ]
-        );
-
-        // check if it's new
-        $message = ($category->wasRecentlyCreated)
-            ? '<strong>:name</strong> category, created successfully!'
-            : '<strong>:name</strong> category already exists. Nothing changed!';
-        $status = ($category->wasRecentlyCreated)
-            ? 'success'
-            : 'info';
+        // Process the category
+        list($status, $message, $category) = $this->categoryService->add($request);
 
         // redirect
         return redirect()
@@ -102,13 +84,7 @@ class CategoryController extends Controller
         $title          = __("Viewing \":name\" category", ['name' => $category->name]);
         $description    = __("Viewing \":name\" category details.", ['name' => $category->name]);
         //
-        $tableColumnHeaders = [
-            'Category Name',
-            'Category Slug',
-            'Similar To This Category',
-            'Searchable?',
-            'Enabled?'
-        ];
+        $tableColumnHeaders = $this->categoryService->viewTableColumnsHeader();
         //
         return view('category.show', compact('category', 'tableColumnHeaders', 'title', 'description'));
     }
@@ -125,13 +101,7 @@ class CategoryController extends Controller
         $title          = __("Editing \":name\" category", ['name' => $category->name]);
         $description    = __("Editing \":name\" category details.", ['name' => $category->name]);
         //
-        $tableColumnHeaders = [
-            'Category Name',
-            'Category Slug',
-            'Similar To This Category',
-            'Searchable?',
-            'Enabled?'
-        ];
+        $tableColumnHeaders = $this->categoryService->viewTableColumnsHeader();
         //
         return view('category.edit', compact('category', 'tableColumnHeaders', 'title', 'description'));
     }
