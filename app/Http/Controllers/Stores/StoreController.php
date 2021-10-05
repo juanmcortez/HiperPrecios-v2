@@ -2,12 +2,26 @@
 
 namespace App\Http\Controllers\Stores;
 
+use App\Services\Stores\StoreService;
 use App\Models\Stores\Store;
 use App\Http\Requests\Stores\StoreRequest;
 use App\Http\Controllers\Controller;
 
 class StoreController extends Controller
 {
+    protected $storeService;
+
+    /**
+     * Instantiate a new service instance
+     *
+     * @param StoreService $storeService
+     */
+    public function __construct(StoreService $storeService)
+    {
+        $this->storeService = $storeService;
+    }
+
+
     /**
      * Display a listing of the resource.
      *
@@ -19,15 +33,12 @@ class StoreController extends Controller
         $title          = __("Stores list");
         $description    = __("Here is the list of stores available in the system");
         //
+        $tableColumnHeaders = $this->storeService->viewTableColumnsHeader();
+        //
         $storesList = Store::orderBy('storeFullName')->paginate(10);
-        $tableColumnHeaders = [
-            'Store Name',
-            'Store API Url',
-            'Get products and prices?',
-            'Is a VTEX Store?',
-        ];
         return view('store.index', compact('storesList', 'tableColumnHeaders', 'title', 'description'));
     }
+
 
     /**
      * Show the form for creating a new resource.
@@ -40,16 +51,11 @@ class StoreController extends Controller
         $title          = __("New store");
         $description    = __("Use this section to create a new store.");
         //
-        $tableColumnHeaders = [
-            'System Name',
-            'Store Name',
-            'Store API Url',
-            'Get products and prices?',
-            'Is a VTEX Store?',
-        ];
+        $tableColumnHeaders = $this->storeService->editTableColumnsHeader();
         //
         return view('store.create', compact('tableColumnHeaders', 'title', 'description'));
     }
+
 
     /**
      * Store a newly created resource in storage.
@@ -59,34 +65,15 @@ class StoreController extends Controller
      */
     public function store(StoreRequest $request)
     {
-        // Store data if
-        $store = Store::firstOrCreate(
-            // Find the model if these fields exist
-            [
-                'storeShortName' => $request->input('storeShortName'),
-                'storeFullName' => $request->input('storeFullName'),
-                'storeApiUrl' => $request->input('storeApiUrl'),
-            ],
-            // If not, create record with previous values and add the following
-            [
-                'enableApiScrapping' => $request->input('enableApiScrapping'),
-                'isaVtexStore' => $request->input('isaVtexStore'),
-            ]
-        );
-
-        // check if it's new
-        $message = ($store->wasRecentlyCreated)
-            ? '<strong>:name</strong> store, created successfully!'
-            : '<strong>:name</strong> store already exists. Nothing changed!';
-        $status = ($store->wasRecentlyCreated)
-            ? 'success'
-            : 'info';
+        // Process the store
+        list($status, $message, $store) = $this->storeService->add($request);
 
         // redirect
         return redirect()
             ->route('stores.list')
             ->with($status, __($message, ['name' => $store->storeFullName,]));
     }
+
 
     /**
      * Display the specified resource.
@@ -100,15 +87,11 @@ class StoreController extends Controller
         $title          = __("Viewing \":name\" store", ['name' => $store->storeFullName]);
         $description    = __("Viewing \":name\" store details.", ['name' => $store->storeFullName]);
         //
-        $tableColumnHeaders = [
-            'Store Name',
-            'Store API Url',
-            'Get products and prices?',
-            'Is a VTEX Store?',
-        ];
+        $tableColumnHeaders = $this->storeService->viewTableColumnsHeader();
         //
         return view('store.show', compact('store', 'tableColumnHeaders', 'title', 'description'));
     }
+
 
     /**
      * Show the form for editing the specified resource.
@@ -122,16 +105,11 @@ class StoreController extends Controller
         $title          = __("Editing \":name\" store", ['name' => $store->storeFullName]);
         $description    = __("Editing \":name\" store details.", ['name' => $store->storeFullName]);
         //
-        $tableColumnHeaders = [
-            'System Name',
-            'Store Name',
-            'Store API Url',
-            'Get products and prices?',
-            'Is a VTEX Store?',
-        ];
+        $tableColumnHeaders = $this->storeService->editTableColumnsHeader();
         //
         return view('store.edit', compact('store', 'tableColumnHeaders', 'title', 'description'));
     }
+
 
     /**
      * Update the specified resource in storage.
@@ -150,6 +128,7 @@ class StoreController extends Controller
                 __('<strong>:name</strong> store, updated successfully!', ['name' => $store->storeFullName])
             );
     }
+
 
     /**
      * Remove the specified resource from storage.
