@@ -2,7 +2,7 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 <head>
-    @include('components.analytics.google');
+    @includeIf('components.analytics.google')
 
     <!-- Meta -->
     <meta charset="UTF-8">
