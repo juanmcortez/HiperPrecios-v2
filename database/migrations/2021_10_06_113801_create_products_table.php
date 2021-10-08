@@ -21,13 +21,13 @@ class CreateProductsTable extends Migration
             $table->longText('metaDescription')->nullable();
 
             $table->string('nameShort', 128)->nullable();
-            $table->string('nameLong', 256)->nullable();
-            $table->string('ean', 128)->nullable();
+            $table->string('nameLong', 256)->index()->nullable();
+            $table->string('ean', 20)->index()->nullable();
 
             $table->float('measuramentMultiplier', 8, 2)->default(1)->nullable();
-            $table->string('measuramentUnit')->default('kg')->nullable();
+            $table->string('measuramentUnit', 3)->default('kg')->nullable();
 
-            $table->unsignedBigInteger('belongsToCategory')->nullable();
+            $table->unsignedBigInteger('belongsToCategory')->index()->nullable();
 
             $table->longText('imageUrl')->nullable();
 
