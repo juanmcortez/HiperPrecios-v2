@@ -26,6 +26,13 @@
                         </li>
                         <li class="nav-item">
                             <a class="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-white hover:opacity-75"
+                                href="{{ route('products.list') }}">
+                                <i class="fas fa-gifts text-lg leading-lg text-white opacity-75 mr-2"></i>
+                                {{ __('Products') }}
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-white hover:opacity-75"
                                 href="{{ route('stores.list') }}">
                                 <i class="fas fa-store text-lg leading-lg text-white opacity-75 mr-2"></i>
                                 {{ __('Stores') }}

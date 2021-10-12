@@ -5,6 +5,7 @@ namespace App\Models\Categories;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Products\Product;
 
 class Category extends Model
 {
@@ -83,5 +84,16 @@ class Category extends Model
     public function setEnabledAttribute($value)
     {
         $this->attributes['enabled'] = ($value === "on") ? true : false;
+    }
+
+
+    /**
+     * Category - Products relationship
+     *
+     * @return void
+     */
+    public function products()
+    {
+        return $this->hasMany(Product::class, 'belongsToCategory', 'id');
     }
 }

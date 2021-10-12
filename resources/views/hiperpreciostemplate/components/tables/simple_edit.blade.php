@@ -12,7 +12,9 @@
     <thead>
         <tr class="bg-gray-200 text-gray-600 uppercase text-sm leading-normal">
             @foreach ($columnHeaders as $columnHead)
-            <th class="py-4 px-6 text-center w-80">{{ __($columnHead) }}</th>
+            <th class="py-4 px-6 text-center w-[{{ (100/count($columnHeaders)).'%' }}]">
+                {{ __($columnHead) }}
+            </th>
             @endforeach
         </tr>
     </thead>
@@ -52,7 +54,9 @@
     <tfoot>
         <tr class="bg-gray-200 text-gray-600 uppercase text-sm leading-normal">
             @foreach ($columnFooters as $columnFoot)
-            <th class="py-4 px-6 text-center w-80">{{ __($columnFoot) }}</th>
+            <th class="py-4 px-6 text-center w-[{{ (100/count($columnFooters)).'%' }}]">
+                {{ __($columnFoot) }}
+            </th>
             @endforeach
         </tr>
     </tfoot>
