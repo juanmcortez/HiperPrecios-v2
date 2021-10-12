@@ -52,9 +52,10 @@ class ProductController extends Controller
         $title          = __("New Product");
         $description    = __("Use this section to create a new product.");
         //
-        $tableColumnHeaders = $this->productService->editTableColumnsHeader();
+        $categories     = $this->productService->producCategoriesOptions();
+        $units          = $this->productService->productWeightUnitsOptions();
         //
-        return view('product.create', compact('tableColumnHeaders', 'title', 'description'));
+        return view('product.create', compact('categories', 'units', 'title', 'description'));
     }
 
 
@@ -67,7 +68,7 @@ class ProductController extends Controller
     public function store(ProductRequest $request)
     {
         // Process the store
-        list($status, $message, $product) = $this->productService->add($request);
+        list($status, $message, $product) = $this->productService->addUpdate($request);
 
         // redirect
         return redirect()
@@ -106,9 +107,10 @@ class ProductController extends Controller
         $title          = __("Editing \":name\" product", ['name' => $product->nameLong]);
         $description    = __("Editing \":name\" product details.", ['name' => $product->nameLong]);
         //
-        $tableColumnHeaders = $this->productService->editTableColumnsHeader();
+        $categories     = $this->productService->producCategoriesOptions();
+        $units          = $this->productService->productWeightUnitsOptions();
         //
-        return view('product.edit', compact('product', 'tableColumnHeaders', 'title', 'description'));
+        return view('product.edit', compact('product', 'categories', 'units', 'title', 'description'));
     }
 
 
@@ -121,7 +123,9 @@ class ProductController extends Controller
      */
     public function update(ProductRequest $request, Product $product)
     {
-        $product->update($request->toArray());
+        // $product->update($request->toArray());
+        list($status, $message, $product) = $this->productService->addUpdate($request);
+
         return redirect()
             ->route('products.list')
             ->with(
@@ -140,6 +144,7 @@ class ProductController extends Controller
     public function destroy(Product $product)
     {
         $product->delete();
+
         return redirect()
             ->route('products.list')
             ->with(
