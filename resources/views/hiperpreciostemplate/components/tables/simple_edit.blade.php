@@ -24,9 +24,6 @@
     <tbody class="text-gray-600 text-sm font-light">
         <tr class="border-b border-gray-200 hover:bg-gray-100">
             @switch($routeBtn)
-            @case('products')
-            <x-tables.rows.products_edit />
-            @break
             @case('stores')
             <x-tables.rows.stores_edit />
             @break
@@ -40,9 +37,6 @@
     <tbody class="text-gray-600 text-sm font-light">
         <tr class="border-b border-gray-200 hover:bg-gray-100">
             @switch($routeBtn)
-            @case('products')
-            <x-tables.rows.products_edit :items="$columnContents" />
-            @break
             @case('stores')
             <x-tables.rows.stores_edit :items="$columnContents" />
             @break
