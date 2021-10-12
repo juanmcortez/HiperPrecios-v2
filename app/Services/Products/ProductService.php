@@ -2,7 +2,10 @@
 
 namespace App\Services\Products;
 
+use Intervention\Image\Facades\Image;
+use Illuminate\Support\Facades\Storage;
 use App\Models\Products\Product;
+use App\Models\Categories\Category;
 
 class ProductService
 {
@@ -49,6 +52,39 @@ class ProductService
 
 
     /**
+     * Return an array of categories available in the system
+     * to build a select component in the view
+     *
+     * @return Array
+     */
+    public function producCategoriesOptions()
+    {
+        return Category::select('id', 'name')->get()->toArray();
+    }
+
+
+    /**
+     * Return an array of units available
+     * to build a select component in the view
+     *
+     * @return Array
+     */
+    public function productWeightUnitsOptions()
+    {
+        return [
+            'gr'    => 'Gr.',
+            'kg'    => 'Kg.',
+            'un'    => 'Un.',
+            'cm3'   => 'cm3',
+            'ml'    => 'Ml.',
+            'l'     => 'Lt.',
+            'mm'    => 'Mm.',
+            'mt'    => 'Mt.'
+        ];
+    }
+
+
+    /**
      * Returns a collection of the Products. This is ordered
      * first by category name, and then by product name. Also
      * the collection is paginated.
@@ -71,7 +107,7 @@ class ProductService
      * @param $request
      * @return void
      */
-    public function add($request)
+    public function addUpdate($request)
     {
         // Product data if
         $product = Product::firstOrCreate(
@@ -92,6 +128,18 @@ class ProductService
                 'imageUrl' => $request->input('imageUrl'),
             ]
         );
+
+        // Handle Image
+        if ($request->hasFile('imageUrl')) {
+            // Get the uploaded image and resize it with aspect ratio change it to jpg in 75% quality
+            $modifyupload = Image::make($request->file('imageUrl')->path())->fit(100)->encode('jpg', 75);
+            // Create the new name
+            $newfilenam = md5(uniqid(time(), true)) . '.jpg';
+            // Store the file in the system and prepare reference for db
+            if (Storage::put("products" . DIRECTORY_SEPARATOR . $newfilenam, $modifyupload)) {
+                $product->update(['imageUrl' => "products" . DIRECTORY_SEPARATOR . $newfilenam]);
+            }
+        }
 
         // check if it's new
         $message = ($product->wasRecentlyCreated)
