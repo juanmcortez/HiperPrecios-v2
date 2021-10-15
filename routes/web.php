@@ -5,6 +5,7 @@ use App\Http\Controllers\Stores\StoreController;
 use App\Http\Controllers\Products\ProductController;
 use App\Http\Controllers\Dashboard\LandingController;
 use App\Http\Controllers\Categories\CategoryController;
+use App\Http\Controllers\Brands\BrandController;
 
 /*
 |--------------------------------------------------------------------------
@@ -42,6 +43,19 @@ Route::prefix('/products/categories/list')->name('categories.')->group(function 
     Route::get('/edit/{category}',      [CategoryController::class, 'edit'])->name('edit');
     Route::post('/edit/{category}',     [CategoryController::class, 'update'])->name('update');
     Route::patch('/remove/{category}',  [CategoryController::class, 'destroy'])->name('delete');
+    // });
+});
+
+// Brands routes
+Route::prefix('/products/brands/list')->name('brands.')->group(function () {
+    Route::get('/',                     [BrandController::class, 'index'])->name('list');
+    Route::get('/show/{brand}',         [BrandController::class, 'show'])->name('show');
+    // Route::group(['middleware' => 'auth'], function () {
+    Route::get('/new/',                 [BrandController::class, 'create'])->name('create');
+    Route::post('/new/',                [BrandController::class, 'store'])->name('store');
+    Route::get('/edit/{brand}',         [BrandController::class, 'edit'])->name('edit');
+    Route::post('/edit/{brand}',        [BrandController::class, 'update'])->name('update');
+    Route::patch('/remove/{brand}',     [BrandController::class, 'destroy'])->name('delete');
     // });
 });
 
