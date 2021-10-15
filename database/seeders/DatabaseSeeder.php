@@ -20,7 +20,7 @@ class DatabaseSeeder extends Seeder
         $this->call([
             StoreSeeder::class,         // Seed the stores.
             CategorySeeder::class,      // Seed the product categories.
-            ProductSeeder::class,      // Seed the product categories.
+            // ProductSeeder::class,      // Seed the product categories.
         ]);
     }
 }
