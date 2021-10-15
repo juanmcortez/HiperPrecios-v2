@@ -52,10 +52,11 @@ class ProductController extends Controller
         $title          = __("New Product");
         $description    = __("Use this section to create a new product.");
         //
-        $categories     = $this->productService->producCategoriesOptions();
+        $brands         = $this->productService->productBrandsOptions();
+        $categories     = $this->productService->productCategoriesOptions();
         $units          = $this->productService->productWeightUnitsOptions();
         //
-        return view('product.create', compact('categories', 'units', 'title', 'description'));
+        return view('product.create', compact('brands', 'categories', 'units', 'title', 'description'));
     }
 
 
@@ -107,10 +108,11 @@ class ProductController extends Controller
         $title          = __("Editing \":name\" product", ['name' => $product->nameLong]);
         $description    = __("Editing \":name\" product details.", ['name' => $product->nameLong]);
         //
-        $categories     = $this->productService->producCategoriesOptions();
+        $brands         = $this->productService->productBrandsOptions();
+        $categories     = $this->productService->productCategoriesOptions();
         $units          = $this->productService->productWeightUnitsOptions();
         //
-        return view('product.edit', compact('product', 'categories', 'units', 'title', 'description'));
+        return view('product.edit', compact('product', 'brands', 'categories', 'units', 'title', 'description'));
     }
 
 

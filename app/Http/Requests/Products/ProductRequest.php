@@ -33,6 +33,7 @@ class ProductRequest extends FormRequest
             'measuramentMultiplier'     => 'required|numeric',
             'measuramentUnit'           => 'required|max:3',
             'belongsToCategory'         => 'required|exists:categories,ID',
+            'belongsToBrand'            => 'required|exists:brands,ID',
             'imageUrl'                  => 'nullable|file|image|dimensions:max_width=1024,max_height=1024,min_width=200,min_height=200'
         ];
     }
@@ -59,6 +60,8 @@ class ProductRequest extends FormRequest
             'measuramentUnit.max'               => 'The <strong>Units</strong> field can\'t contain more than 3 characters.',
             'belongsToCategory.required'        => 'The <strong>Category</strong> field is required.',
             'belongsToCategory.exists'          => 'The <strong>Category</strong> selected does not exist.',
+            'belongsToBrand.required'           => 'The <strong>Brand</strong> field is required.',
+            'belongsToBrand.exists'             => 'The <strong>Brand</strong> selected does not exist.',
             'imageUrl.file'                     => 'The <strong>Product Image</strong> is not an uploaded file.',
             'imageUrl.image'                    => 'The <strong>Product Image</strong> needs to be: jpg, jpeg, png, bmp, gif, svg, or webp.',
             'imageUrl.dimensions'               => 'The <strong>Product Image</strong> size needs to be: 1024px x 1024px max.'

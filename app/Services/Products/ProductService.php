@@ -6,6 +6,7 @@ use Intervention\Image\Facades\Image;
 use Illuminate\Support\Facades\Storage;
 use App\Models\Products\Product;
 use App\Models\Categories\Category;
+use App\Models\Brands\Brand;
 
 class ProductService
 {
@@ -21,6 +22,7 @@ class ProductService
             'Product',
             'Name',
             'EAN',
+            'Brand',
             'Category',
             'Weight / Units',
             'Last update',
@@ -57,9 +59,21 @@ class ProductService
      *
      * @return Array
      */
-    public function producCategoriesOptions()
+    public function productCategoriesOptions()
     {
         return Category::select('id', 'name')->get()->toArray();
+    }
+
+
+    /**
+     * Return an array of Brands available in the system
+     * to build a select component in the view
+     *
+     * @return Array
+     */
+    public function productBrandsOptions()
+    {
+        return Brand::select('id', 'name')->get()->toArray();
     }
 
 
@@ -119,6 +133,7 @@ class ProductService
             ],
             // If not, create record with previous values and add the following
             [
+                'belongsToBrand' => $request->input('belongsToBrand'),
                 'metaName' => $request->input('metaName'),
                 'metaTitle' => $request->input('metaTitle'),
                 'metaDescription' => $request->input('metaDescription'),
