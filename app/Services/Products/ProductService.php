@@ -61,7 +61,7 @@ class ProductService
      */
     public function productCategoriesOptions()
     {
-        return Category::select('id', 'name')->get()->toArray();
+        return Category::select('id', 'name')->orderBy('name')->get()->toArray();
     }
 
 
@@ -73,7 +73,7 @@ class ProductService
      */
     public function productBrandsOptions()
     {
-        return Brand::select('id', 'name')->get()->toArray();
+        return Brand::select('id', 'name')->orderBy('name')->get()->toArray();
     }
 
 
@@ -111,6 +111,7 @@ class ProductService
             ->join('categories', 'products.belongsToCategory', '=', 'categories.id')
             ->orderBy('categories.name')
             ->orderBy('products.nameLong')
+            ->with('brand', 'category')
             ->paginate(10);
     }
 
