@@ -33,16 +33,16 @@
                         </li>
                         <li class="nav-item">
                             <a class="flex items-center px-3 py-2 text-xs font-bold leading-snug text-white uppercase hover:opacity-75"
-                                href="{{ route('categories.list') }}">
-                                <i class="mr-2 text-lg text-white opacity-75 fas fa-clipboard-list leading-lg"></i>
-                                {{ __('Products Categories') }}
+                                href="{{ route('brands.list') }}">
+                                <i class="mr-2 text-lg text-white opacity-75 fas fa-industry leading-lg"></i>
+                                {{ __('Products Brands') }}
                             </a>
                         </li>
                         <li class="nav-item">
                             <a class="flex items-center px-3 py-2 text-xs font-bold leading-snug text-white uppercase hover:opacity-75"
-                                href="{{ route('brands.list') }}">
-                                <i class="mr-2 text-lg text-white opacity-75 fas fa-industry leading-lg"></i>
-                                {{ __('Products Brands') }}
+                                href="{{ route('categories.list') }}">
+                                <i class="mr-2 text-lg text-white opacity-75 fas fa-clipboard-list leading-lg"></i>
+                                {{ __('Products Categories') }}
                             </a>
                         </li>
                         <li class="nav-item">

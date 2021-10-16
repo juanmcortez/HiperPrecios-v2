@@ -35,14 +35,15 @@
             <td class="py-4 px-6 text-center whitespace-nowrap align-middle w-[20%]">
                 <select name="belongsToBrand" class="w-full">
                     <option value="">{{ __('Select an option') }}</option>
-                    @foreach ($brandSelect as $brandID => $brand)
+                    @foreach ($brandSelect as $brandItem)
                     @empty($columnContents)
-                    <option @if(old('belongsToBrand')==($brandID+1)) selected @endif value="{{ ($brandID+1) }}">
-                        {{ $brand['name'] }}
+                    <option @if(old('belongsToBrand')==$brandItem['id']) selected @endif value="{{ $brandItem['id'] }}">
+                        {{ $brandItem['name'] }}
                     </option>
                     @else
-                    <option @if($columnContents->category->id==($brandID+1)) selected @endif value="{{ ($brandID+1) }}">
-                        {{ $brand['name'] }}
+                    <option @if($columnContents->brand->id==$brandItem['id']) selected @endif
+                        value="{{ $brandItem['id'] }}">
+                        {{ $brandItem['name'] }}
                     </option>
                     @endempty
                     @endforeach
@@ -104,14 +105,16 @@
             <td class="py-4 px-6 text-center whitespace-nowrap align-middle w-[20%]">
                 <select name="belongsToCategory" class="w-full">
                     <option value="">{{ __('Select an option') }}</option>
-                    @foreach ($categorySelect as $catID => $category)
+                    @foreach ($categorySelect as $categoryItem)
                     @empty($columnContents)
-                    <option @if(old('belongsToCategory')==($catID+1)) selected @endif value="{{ ($catID+1) }}">
-                        {{ $category['name'] }}
+                    <option @if(old('belongsToCategory')==$categoryItem['id']) selected @endif
+                        value="{{ $categoryItem['id'] }}">
+                        {{ $categoryItem['name'] }}
                     </option>
                     @else
-                    <option @if($columnContents->category->id==($catID+1)) selected @endif value="{{ ($catID+1) }}">
-                        {{ $category['name'] }}
+                    <option @if($columnContents->category->id==$categoryItem['id']) selected @endif
+                        value="{{ $categoryItem['id'] }}">
+                        {{ $categoryItem['name'] }}
                     </option>
                     @endempty
                     @endforeach

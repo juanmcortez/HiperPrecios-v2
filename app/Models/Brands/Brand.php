@@ -28,7 +28,7 @@ class Brand extends Model
      * @var array
      */
     protected $hidden = [
-        'id',
+        /*'id',*/
         'slug',
         'created_at',
         'deleted_at',
