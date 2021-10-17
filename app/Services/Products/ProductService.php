@@ -111,7 +111,7 @@ class ProductService
             ->join('categories', 'products.belongsToCategory', '=', 'categories.id')
             ->orderBy('categories.name')
             ->orderBy('products.nameLong')
-            ->with('brand', 'category')
+            ->with('brand', 'category', 'prices')
             ->paginate(10);
     }
 
