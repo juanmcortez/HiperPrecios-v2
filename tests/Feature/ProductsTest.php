@@ -7,6 +7,7 @@ use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use App\Models\Products\Product;
 use App\Models\Categories\Category;
+use App\Models\Brands\Brand;
 
 class ProductsTest extends TestCase
 {
@@ -49,6 +50,7 @@ class ProductsTest extends TestCase
         $response->assertSeeText('New Product');
 
         $newCategories = Category::factory(10)->create();
+        $newBrands = Brand::factory(10)->create();
         $newProduct = Product::factory()->create();
         $response = $this->get(route('products.show', ['product' => $newProduct->id]));
         $response->assertStatus(200);
@@ -63,6 +65,7 @@ class ProductsTest extends TestCase
     public function test_UpdateNewProduct()
     {
         $newCategories = Category::factory(10)->create();
+        $newBrands = Brand::factory(10)->create();
         $newProduct = Product::factory()->create();
         $response = $this->post(
             route('products.update', ['product' => $newProduct->id]),
@@ -70,6 +73,7 @@ class ProductsTest extends TestCase
                 'nameLong'              => 'test',
                 'ean'                   => '1234567890123',
                 'belongsToCategory'     => 5,
+                'belongsToBrand'        => 3,
                 'measuramentMultiplier' => 0.25,
                 'measuramentUnit'       => 'kg',
             ]
@@ -86,6 +90,7 @@ class ProductsTest extends TestCase
     public function test_UpdateNoDataProduct()
     {
         $newCategories = Category::factory(10)->create();
+        $newBrands = Brand::factory(10)->create();
         $newProduct = Product::factory()->create();
         $response = $this->post(route('products.update', ['product' => $newProduct->id]));
         $response->assertSessionHas('errors');
@@ -100,6 +105,7 @@ class ProductsTest extends TestCase
     public function test_EditNewProduct()
     {
         $newCategories = Category::factory(10)->create();
+        $newBrands = Brand::factory(10)->create();
         $newProduct = Product::factory()->create();
         $response = $this->get(route('products.edit', ['product' => $newProduct->id]));
         $response->assertStatus(200);
@@ -114,6 +120,7 @@ class ProductsTest extends TestCase
     public function test_DeleteNewProduct()
     {
         $newCategories = Category::factory(10)->create();
+        $newBrands = Brand::factory(10)->create();
         $newProduct = Product::factory()->create();
         $response = $this->get(route('products.delete', ['product' => $newProduct->id]));
         $response->assertStatus(405);
