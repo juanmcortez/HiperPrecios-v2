@@ -28,6 +28,7 @@ class CreateProductsTable extends Migration
             $table->string('measuramentUnit', 3)->default('kg')->nullable();
 
             $table->unsignedBigInteger('belongsToCategory')->index()->nullable();
+            $table->unsignedBigInteger('belongsToBrand')->nullable();
 
             $table->longText('imageUrl')->nullable();
 

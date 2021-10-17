@@ -6,7 +6,9 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Carbon\Carbon;
+use App\Models\Prices\Price;
 use App\Models\Categories\Category;
+use App\Models\Brands\Brand;
 
 class Product extends Model
 {
@@ -27,6 +29,7 @@ class Product extends Model
         'measuramentMultiplier',
         'measuramentUnit',
         'belongsToCategory',
+        'belongsToBrand',
         'imageUrl'
     ];
 
@@ -42,6 +45,7 @@ class Product extends Model
         'metaTitle',
         'metaDescription',
         'belongsToCategory',
+        'belongsToBrand',
         'created_at',
         'deleted_at',
     ];
@@ -79,5 +83,29 @@ class Product extends Model
     public function category()
     {
         return $this->belongsTo(Category::class, 'belongsToCategory', 'id')->withDefault();
+    }
+
+
+    /**
+     * Product - Brand relationship
+     *
+     * @return void
+     */
+    public function brand()
+    {
+        return $this->belongsTo(Brand::class, 'belongsToBrand', 'id')->withDefault();
+    }
+
+
+    /**
+     * Product - Price relationship
+     *
+     * @return void
+     */
+    public function prices()
+    {
+        return $this->hasMany(Price::class, 'belongsToProduct', 'id')
+            ->orderBy('price')
+            ->orderBy('listPrice');
     }
 }

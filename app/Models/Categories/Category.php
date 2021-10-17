@@ -31,8 +31,8 @@ class Category extends Model
      * @var array
      */
     protected $hidden = [
-        'id',
-        /*'slug',
+        /*'id',
+        'slug',
         'similar',
         'searchable',
         'enabled',*/

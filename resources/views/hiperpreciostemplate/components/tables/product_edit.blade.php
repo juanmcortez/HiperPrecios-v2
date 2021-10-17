@@ -1,10 +1,11 @@
 @props([
+'brandSelect',
 'categorySelect',
 'unitSelect',
 'columnContents',
 ])
 <table {{ $attributes->merge(['class' => 'min-w-full w-full table-auto']) }} border="0" cellpadding="0" cellspacing="0">
-    <tbody class="text-gray-600 text-sm font-light">
+    <tbody class="text-sm font-light text-gray-600">
         <tr class="border-b-0 border-gray-200 hover:bg-gray-100">
             <td class="py-4 px-0 text-right whitespace-nowrap align-middle font-bold uppercase w-[10%]">
                 {{ __('Name') }}
@@ -29,19 +30,20 @@
                 @endempty
             </td>
             <td class="py-4 px-0 text-right whitespace-nowrap align-middle font-bold uppercase w-[10%]">
-                {{ __('Category') }}
+                {{ __('Brand') }}
             </td>
             <td class="py-4 px-6 text-center whitespace-nowrap align-middle w-[20%]">
-                <select name="belongsToCategory" class="w-full">
+                <select name="belongsToBrand" class="w-full">
                     <option value="">{{ __('Select an option') }}</option>
-                    @foreach ($categorySelect as $catID => $category)
+                    @foreach ($brandSelect as $brandItem)
                     @empty($columnContents)
-                    <option @if(old('belongsToCategory')==($catID+1)) selected @endif value="{{ ($catID+1) }}">
-                        {{ $category['name'] }}
+                    <option @if(old('belongsToBrand')==$brandItem['id']) selected @endif value="{{ $brandItem['id'] }}">
+                        {{ $brandItem['name'] }}
                     </option>
                     @else
-                    <option @if($columnContents->category->id==($catID+1)) selected @endif value="{{ ($catID+1) }}">
-                        {{ $category['name'] }}
+                    <option @if($columnContents->brand->id==$brandItem['id']) selected @endif
+                        value="{{ $brandItem['id'] }}">
+                        {{ $brandItem['name'] }}
                     </option>
                     @endempty
                     @endforeach
@@ -49,10 +51,10 @@
             </td>
         </tr>
         <tr class="border-b-0 border-gray-200 hover:bg-gray-100">
-            <td class="py-4 px-0 text-right whitespace-nowrap align-middle font-bold uppercase">
+            <td class="px-0 py-4 font-bold text-right uppercase align-middle whitespace-nowrap">
                 {{ __('Short Name') }}
             </td>
-            <td class="py-4 px-6 text-center whitespace-nowrap align-middle">
+            <td class="px-6 py-4 text-center align-middle whitespace-nowrap">
                 @empty($columnContents)
                 <input type="text" name="nameShort" maxlength="128" value="{{ old('nameShort') }}" class="w-full" />
                 @else
@@ -60,10 +62,10 @@
                     class="w-full" />
                 @endempty
             </td>
-            <td class="py-4 px-0 text-right whitespace-nowrap align-middle font-bold uppercase">
+            <td class="px-0 py-4 font-bold text-right uppercase align-middle whitespace-nowrap">
                 {{ __('Weight / Units') }}
             </td>
-            <td class="py-4 px-6 text-center whitespace-nowrap align-middle">
+            <td class="px-6 py-4 text-center align-middle whitespace-nowrap">
                 <table class="w-full">
                     <tbody>
                         <tr>
@@ -97,10 +99,55 @@
                     </tbody>
                 </table>
             </td>
-            <td class="py-4 px-0 text-right whitespace-nowrap align-middle font-bold uppercase">
+            <td class="py-4 px-0 text-right whitespace-nowrap align-middle font-bold uppercase w-[10%]">
+                {{ __('Category') }}
+            </td>
+            <td class="py-4 px-6 text-center whitespace-nowrap align-middle w-[20%]">
+                <select name="belongsToCategory" class="w-full">
+                    <option value="">{{ __('Select an option') }}</option>
+                    @foreach ($categorySelect as $categoryItem)
+                    @empty($columnContents)
+                    <option @if(old('belongsToCategory')==$categoryItem['id']) selected @endif
+                        value="{{ $categoryItem['id'] }}">
+                        {{ $categoryItem['name'] }}
+                    </option>
+                    @else
+                    <option @if($columnContents->category->id==$categoryItem['id']) selected @endif
+                        value="{{ $categoryItem['id'] }}">
+                        {{ $categoryItem['name'] }}
+                    </option>
+                    @endempty
+                    @endforeach
+                </select>
+            </td>
+        </tr>
+        <tr class="border-b-0 border-gray-200 hover:bg-gray-100">
+            <td class="px-0 py-4 font-bold text-right uppercase align-middle whitespace-nowrap">
+                {{ __('Meta Name') }}
+            </td>
+            <td class="px-6 py-4 text-center align-middle whitespace-nowrap">
+                @empty($columnContents)
+                <input type="text" name="metaName" maxlength="128" value="{{ old('metaName') }}" class="w-full" />
+                @else
+                <input type="text" name="metaName" maxlength="128" value="{{ $columnContents->metaName }}"
+                    class="w-full" />
+                @endempty
+            </td>
+            <td class="px-0 py-4 font-bold text-right uppercase align-middle whitespace-nowrap">
+                {{ __('Meta Title') }}
+            </td>
+            <td class="px-6 py-4 text-center align-middle whitespace-nowrap">
+                @empty($columnContents)
+                <input type="text" name="metaTitle" maxlength="128" value="{{ old('metaTitle') }}" class="w-full" />
+                @else
+                <input type="text" name="metaTitle" maxlength="128" value="{{ $columnContents->metaTitle }}"
+                    class="w-full" />
+                @endempty
+            </td>
+            <td class="px-0 py-4 font-bold text-right uppercase align-middle whitespace-nowrap">
                 {{ __('Product') }}
             </td>
-            <td class="py-4 px-6 text-center whitespace-nowrap align-middle">
+            <td class="px-6 py-4 text-center align-middle whitespace-nowrap">
                 <table>
                     <tbody>
                         <tr>
@@ -114,7 +161,7 @@
                                     class="min-w-[2.5rem] w-autow-auto h-10 mx-auto border-2 border-gray-400 rounded-md" />
                                 @endempty
                             </td>
-                            <td class="py-4 px-6 text-center whitespace-nowrap align-middle w-2/3">
+                            <td class="w-2/3 px-6 py-4 text-center align-middle whitespace-nowrap">
                                 <input type="file" name="imageUrl" class="w-full" />
                             </td>
                         </tr>
@@ -123,34 +170,10 @@
             </td>
         </tr>
         <tr class="border-b-0 border-gray-200 hover:bg-gray-100">
-            <td class="py-4 px-0 text-right whitespace-nowrap align-middle font-bold uppercase">
-                {{ __('Meta Name') }}
-            </td>
-            <td class="py-4 px-6 text-center whitespace-nowrap align-middle">
-                @empty($columnContents)
-                <input type="text" name="metaName" maxlength="128" value="{{ old('metaName') }}" class="w-full" />
-                @else
-                <input type="text" name="metaName" maxlength="128" value="{{ $columnContents->metaName }}"
-                    class="w-full" />
-                @endempty
-            </td>
-            <td class="py-4 px-0 text-right whitespace-nowrap align-middle font-bold uppercase">
-                {{ __('Meta Title') }}
-            </td>
-            <td class="py-4 px-6 text-center whitespace-nowrap align-middle">
-                @empty($columnContents)
-                <input type="text" name="metaTitle" maxlength="128" value="{{ old('metaTitle') }}" class="w-full" />
-                @else
-                <input type="text" name="metaTitle" maxlength="128" value="{{ $columnContents->metaTitle }}"
-                    class="w-full" />
-                @endempty
-            </td>
-        </tr>
-        <tr class="border-b-0 border-gray-200 hover:bg-gray-100">
-            <td class="pb-4 pt-7 px-0 text-right whitespace-nowrap align-top font-bold uppercase">
+            <td class="px-0 pb-4 font-bold text-right uppercase align-top pt-7 whitespace-nowrap">
                 {{ __('Meta Description') }}
             </td>
-            <td class="py-4 px-6 text-center whitespace-nowrap align-middle" colspan="7">
+            <td class="px-6 py-4 text-center align-middle whitespace-nowrap" colspan="7">
                 @empty($columnContents)
                 <textarea name="metaDescription" class="w-full resize-none"
                     rows="3">{{ old('metaDescription') }}</textarea>

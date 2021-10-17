@@ -5,6 +5,7 @@ namespace Database\Factories\Products;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use App\Models\Products\Product;
 use App\Models\Categories\Category;
+use App\Models\Brands\Brand;
 
 class ProductFactory extends Factory
 {
@@ -23,6 +24,7 @@ class ProductFactory extends Factory
     public function definition()
     {
         $categoryList = Category::select('id')->orderBy('name')->get();
+        $brandList = Brand::select('id')->orderBy('name')->get();
         return [
             'metaName'              => $this->faker->name,
             'metaTitle'             => $this->faker->title,
@@ -31,6 +33,7 @@ class ProductFactory extends Factory
             'nameLong'              => $this->faker->name,
             'ean'                   => $this->faker->ean13(),
             'belongsToCategory'     => $this->faker->randomElement($categoryList),
+            'belongsToBrand'        => $this->faker->randomElement($brandList),
             'imageUrl'              => $this->faker->imageUrl,
         ];
     }

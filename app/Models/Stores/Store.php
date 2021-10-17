@@ -30,7 +30,6 @@ class Store extends Model
      * @var array
      */
     protected $hidden = [
-        'id',
         'storeShortName',
         'enableApiScrapping',
         'isaVtexStore',
