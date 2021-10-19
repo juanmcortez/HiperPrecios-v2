@@ -105,6 +105,7 @@ class Product extends Model
     public function prices()
     {
         return $this->hasMany(Price::class, 'belongsToProduct', 'id')
+            ->with('store')
             ->orderBy('price')
             ->orderBy('listPrice');
     }
