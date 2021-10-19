@@ -25,7 +25,7 @@ class ProductService
             'Brand',
             'Category',
             'Weight / Units',
-            'Last update',
+            'Best Price',
         ];
     }
 
@@ -125,7 +125,7 @@ class ProductService
     public function addUpdate($request)
     {
         // Product data if
-        $product = Product::firstOrCreate(
+        $product = Product::updateOrCreate(
             // Find the model if these fields exist
             [
                 'nameLong' => $request->input('nameLong'),
@@ -151,9 +151,14 @@ class ProductService
             $modifyupload = Image::make($request->file('imageUrl')->path())->fit(100)->encode('jpg', 75);
             // Create the new name
             $newfilenam = md5(uniqid(time(), true)) . '.jpg';
+            // Check if folder exists
+            $productsFolder = "products";
+            if (Storage::missing($productsFolder)) {
+                Storage::makeDirectory($productsFolder);
+            }
             // Store the file in the system and prepare reference for db
-            if (Storage::put("products" . DIRECTORY_SEPARATOR . $newfilenam, $modifyupload)) {
-                $product->update(['imageUrl' => "products" . DIRECTORY_SEPARATOR . $newfilenam]);
+            if (Storage::put($productsFolder . DIRECTORY_SEPARATOR . $newfilenam, $modifyupload)) {
+                $product->update(['imageUrl' => $productsFolder . DIRECTORY_SEPARATOR . $newfilenam]);
             }
         }
 

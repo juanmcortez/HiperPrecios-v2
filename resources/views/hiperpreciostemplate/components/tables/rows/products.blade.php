@@ -14,4 +14,13 @@
 <td class="px-6 py-4 text-center align-top whitespace-nowrap">
     {{ $items->measuramentMultiplier . ' ' . $items->measuramentUnit }}
 </td>
-<td class="px-6 py-4 text-center align-top whitespace-nowrap">{{ $items->updated_at }}</td>
+<td class="px-6py-4text-centeralign-topwhitespace-nowrap">
+    <ul class="flex flex-col">
+        <li class="inline-flex align-middle">
+            <img src="{{ secure_asset($items->prices->first()->store->imageUrl) }}"
+                title="{{ $items->prices->first()->store->storeFullName }}"
+                class="min-w-[2.5rem] w-auto h-10 mx-2 border-2 border-gray-400 rounded-md">
+            <p class="px-3 pt-3">$ {{ $items->prices->first()->price }}</p>
+        </li>
+    </ul>
+</td>

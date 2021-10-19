@@ -7,6 +7,23 @@
 <table {{ $attributes->merge(['class' => 'min-w-full w-full table-auto']) }} border="0" cellpadding="0" cellspacing="0">
     <tbody class="text-sm font-light text-gray-600">
         <tr class="border-b-0 border-gray-200 hover:bg-gray-100">
+            <td class="px-0 pb-4 font-bold text-right uppercase align-top pt-7 whitespace-nowrap">
+                {{ __('Prices') }}
+            </td>
+            <td class="px-6 py-4 text-center align-middle whitespace-nowrap" colspan="7">
+                <ul class="flex flex-row">
+                    @foreach ($columnContents->prices as $price)
+                    <li class="inline-flex align-middle">
+                        <img src="{{ secure_asset($price->store->imageUrl) }}"
+                            title="{{ $price->store->storeFullName }}"
+                            class="min-w-[2.5rem] w-auto h-10 mx-2 border-2 border-gray-400 rounded-md">
+                        <input type="text" class="px-3 pt-3" value="{{ $price->price }}" />
+                    </li>
+                    @endforeach
+                </ul>
+            </td>
+        </tr>
+        <tr class="border-b-0 border-gray-200 hover:bg-gray-100">
             <td class="py-4 px-0 text-right whitespace-nowrap align-middle font-bold uppercase w-[10%]">
                 {{ __('Name') }}
             </td>
