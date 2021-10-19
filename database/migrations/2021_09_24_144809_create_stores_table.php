@@ -23,6 +23,8 @@ class CreateStoresTable extends Migration
             $table->boolean('enableApiScrapping')->default(true);
             $table->boolean('isaVtexStore')->default(false);
 
+            $table->longText('imageUrl')->nullable();
+
             $table->softDeletes();
             $table->timestamps();
         });

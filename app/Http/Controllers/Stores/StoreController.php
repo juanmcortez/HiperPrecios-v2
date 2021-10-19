@@ -66,7 +66,7 @@ class StoreController extends Controller
     public function store(StoreRequest $request)
     {
         // Process the store
-        list($status, $message, $store) = $this->storeService->add($request);
+        list($status, $message, $store) = $this->storeService->addUpdate($request);
 
         // redirect
         return redirect()
@@ -120,7 +120,9 @@ class StoreController extends Controller
      */
     public function update(StoreRequest $request, Store $store)
     {
-        $store->update($request->toArray());
+        //$store->update($request->toArray());
+        list($status, $message, $store) = $this->storeService->addUpdate($request);
+
         return redirect()
             ->route('stores.list')
             ->with(
