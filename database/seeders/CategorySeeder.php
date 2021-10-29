@@ -17,119 +17,115 @@ class CategorySeeder extends Seeder
         // List of categories
         $categories = [
             [
+                'searchable' => "on",
                 'name'      => "Almacén",
                 'slug'      => "almacén",
-                'similar'   => "almacén, aceites, acetos, aderezos, arroz, legumbres, caldos, sopas, puré, condimentos, conservas, harinas, sal, snacks, copetín, vinagres, frescos, rotisería, comidas, preparadas",
+                'similar'   => "almacén, desayuno-y-merienda, kiosco, frescos, comidas-preparadas, aceites-y-aderezos, arroz-y-legumbres, conservas, desayuno-y-golosinas, snacks, sopas-caldos-y-puré, dulces-frescos, dulce-de-membrillo-y-otros-dulces, sal, postres-flanes-y-gelatinas",
             ],
             [
                 'name'      => "Automotor",
                 'slug'      => "automotor",
-                'similar'   => "accesorios, automotor, auto, autos, alfombras, fundas, cobertores, baterias, lubricantes, aditivos, motos, neumáticos, vehículos",
+                'similar'   => "automotor, vehículos, neumáticos, alfombras-fundas-y-cobertores-para-auto, baterias-auto, accesorios-para-autos, lubricantes-y-aditivos-para-auto, motos",
             ],
             [
-                'name'      => "Bazar",
-                'slug'      => "bazar",
-                'similar'   => "bazar, hogar, organización, muebles, bicicletas, rodados, blanco, ferretería, indumentaria, juguetes, librería, mobiliario, platos, copas, cubiertos, vivero, adhesivos, aire, tiempo, libre, bolsos, valijas, camping, cotillón, decoración, jardín, fitness, halloween, herramientas, cajas, escaleras, deco, lamparitas, electricidad, libros, macetas, semillas, tierras, abonos, máquinas, playa, música, navidad, año, nuevo, deportes, paseo, viaje, piletas, accesorios, vuelta, cole, textil, ropa, para, cocina, mesa, cama, baño",
+                'name'      => "Bazar y Hogar",
+                'slug'      => "bazar-y-hogar",
+                'similar'   => "bazar, bazar-y-textil, librería, hogar, hogar-y-deco, colchones-y-sommiers, hogar-y-textil, herramientas-cajas-y-escaleras, lamparitas-y-electricidad, pintureria, bolsos-y-valijas, para-la-cocina, para-la-mesa, organización-para-la-ropa, muebles-de-interior, colchones-y-almohadas, ropa-de-cama-y-baño, decoración, libros, música, películas, ferretería, fósforos-y-velas",
             ],
             [
                 'name'      => "Bebés y Niños",
                 'slug'      => "bebés-y-niños",
-                'similar'   => "cuidado, bebé, bebés, niños, pañales, alimentación, infantil, juegos, mesa, juguetes, mundo, peluches, primera, infancia, varios",
+                'similar'   => "bebés-y-niños, mundo-bebé, cuidado-del-bebé, juegos-de-mesa, juguetes, peluches, primera-infancia, alimentación-infantil, paseo-y-viaje, varios-para-el-bebé, cuidado-mamá, juguetería",
             ],
             [
                 'name'      => "Bebidas",
                 'slug'      => "bebidas",
-                'similar'   => "bebidas, aguas, aperitivos, licores, cervezas, espumantes, sidras, gaseosas, jugos, vinos, isotónicas, energizantes, jugos",
+                'similar'   => "bebidas, aperitivos, cervezas, vinos-y-espumantes, bebidas-blancas-y-licores, a-base-de-hierbas, aguas, gaseosas, jugos, isotónicas-y-energizantes",
             ],
             [
                 'name'      => "Carnes",
                 'slug'      => "carnes",
-                'similar'   => "carnes, aves, vacunos, cerdo, chasinados, embutidos, pescados, pulpas, parrillas, carbon, carbón, leña, carnicería, pescadería, pescados, mariscos",
-            ],
-            [
-                'name'      => "Combos",
-                'slug'      => "combos",
-                'similar'   => "combos",
+                'similar'   => "carnes, carnes-y-pescados, carnicería-y-pescadería, pescados-y-mariscos",
             ],
             [
                 'name'      => "Congelados",
                 'slug'      => "congelados",
-                'similar'   => "congelados, helados",
+                'similar'   => "congelados, hielo, salchichas, hamburguesas, hamburguesas-y-milanesas, salchichas-y-hamburguesas",
             ],
             [
                 'name'      => "Cuidado de la ropa",
                 'slug'      => "cuidado-de-la-ropa",
-                'similar'   => "cuidado, ropa, aprestos, quitamanchas, jabon, polvo, líquido, barra, lavado",
+                'similar'   => "cuidado-de-la-ropa, limpieza-de-ropa, limpieza-de-calzado",
             ],
             [
                 'name'      => "Cuidado Personal",
                 'slug'      => "cuidado-personal",
-                'similar'   => "cuidado, personal, botiquín, farmacia, bucal, desodorantes, jabones, cremas, afeitar, perfumes, colonias, shampoo, enjuague, tinturas, fijadores, toallas, apósitos, perfumería, protección, femenina, corporal, adulto, cabello, facial, oral, mamá",
+                'similar'   => "cuidado-personal, perfumería, cuidado-del-cabello, cuidado-oral, cuidado-facial, cuidado-corporal, protección-femenina, cuidado-del-adulto, farmacia",
             ],
             [
-                'name'      => "Desayuno y Merienda",
-                'slug'      => "desayuno-y-merienda",
-                'similar'   => "desayuno, merienda, golosinas, cacaos, café, cereales, avenas, dulces, jaleas, galletas, infusiones, yerbas, azucar, edulcorante, té, base, hierbas",
+                'name'      => "Deporte",
+                'slug'      => "deporte",
+                'similar'   => "deporte, deportes, rodados, bicicletas, fitness, otros-deportes, tiempo-libre-y-deportes",
+            ],
+            [
+                'name'      => "Electro y Tecno",
+                'slug'      => "electro-y-tecno",
+                'similar'   => "tecnología, electro-y-tecnología, electrodomésticos, electro-hogar, electro, tv-y-video, audio, informática, gaming, telefonía, almacenamiento, impresoras, climatización, calefacción, heladeras-y-freezers, lavado, calefones-y-termotanques, cocinas-y-extractores, pequeño-electro",
             ],
             [
                 'name'      => "Fiambres y Quesos",
                 'slug'      => "fiambres-y-quesos",
-                'similar'   => "fiambres, quesos, aceitunas, encurtidos, pickles, salames, mortadelas, salchichas, hamburguesas, untables, fiambrería",
+                'similar'   => "fiambres-y-quesos, quesos-y-fiambres, fiambrería, aceitunas-y-encurtidos",
             ],
             [
                 'name'      => "Frutas y Verduras",
                 'slug'      => "frutas-y-verduras",
-                'similar'   => "frutas, verduras, frutos, secos, huevos",
+                'similar'   => "frutas-y-verduras, huevos",
             ],
             [
                 'name'      => "Indumentaria y calzado",
                 'slug'      => "indumentaria-y-calzado",
-                'similar'   => "indumentaria, calzado, moda, otros, deportes",
+                'similar'   => "indumentaria-y-calzado, moda, textil, guardapolvos",
             ],
             [
-                'name'      => "Kiosco",
-                'slug'      => "kiosco",
-                'similar'   => "kiosco, alfajores, caramelos, chicles, chocolates, turrones, crocantes",
+                'name'      => "Jardín",
+                'slug'      => "jardín",
+                'similar'   => "jardín, aire-libre-y-jardín, aire-libre, tiempo-libre, camping, máquinas-y-herramientas-de-jardín, macetas-semillas-tierras-y-abonos, muebles-de-jardín-y-playa, decoración-y-accesorios-de-jardín, parrillas-y-carbón, piletas-y-accesorios, carbón-y-encendido, carbón-y-leña",
             ],
             [
                 'name'      => "Lácteos",
                 'slug'      => "lácteos",
-                'similar'   => "lácteos, cremas, leches, mantecas, margarinas, postres, flanes, yogures, productos, frescos",
+                'similar'   => "lácteos, lácteos-y-productos-frescos, leches, leche-en-polvo",
             ],
             [
-                'name'      => "Limpieza y Hogar",
-                'slug'      => "limipieza-y-hogar",
-                'similar'   => "accesorios, limpíeza, hogar, baños, cocinas, bolsas, residuos, cuidado, desodorante, ambiente, ambientes, iluminación, energía, insecticidas, repelentes, lavavajillas, papeles, pisos, muebles, trapos, esponjas, guantes, calefacción, calefones, termotanques, climatización, extractores, colchones, sommiers, almohadas, electro, heladeras, freezers, lavandina, pequeño, pinturería, tecnología, electrodomésticos, calzado, ropa, interior",
+                'name'      => "Limpieza",
+                'slug'      => "limpieza",
+                'similar'   => "limpíeza, limpieza-y-hogar, desodorante-de-ambientes, papeles, limpieza-de-baño, limpieza-de-cocina, limpieza-de-pisos-y-muebles, accesorios-de-limpieza, insecticidas, lavandina, lavandinas, desodorantes-de-ambiente, artículos-de-limpieza,  papelería, limpiadores, rollos-de-cocina-y-servilletas, papeles-higiénicos, bolsas",
             ],
             [
                 'name'      => "Mascotas",
                 'slug'      => "mascotas",
-                'similar'   => "mascotas, alimentos, aves, gatos, perros, accesorios",
+                'similar'   => "mascotas, alimento-perro, alimento-gato, accesorios-y-otras-mascotas",
             ],
             [
                 'name'      => "Otros",
                 'slug'      => "otros",
-                'similar'   => "otros, sin, categoría, taeq, test, category, no, corresponde",
+                'similar'   => "combos, bolsones, otros, taeq, sin-categoría, no-corresponde, test-category, navidad-y-año-nuevo, cajas-navidenas, cotillón, halloween, vuelta-al-cole",
             ],
             [
                 'name'      => "Panadería y Repostería",
                 'slug'      => "panadería-y-repostería",
-                'similar'   => "panadería, pan, lactal, pizzas, panificados, repostería, grasas, levaduras, postres, flanes, gelatinas, reposteros",
+                'similar'   => "panadería, repostería, panadería-y-repostería, repostería-y-postres, panificados, reposteros",
             ],
             [
                 'name'      => "Pastas",
                 'slug'      => "pastas",
-                'similar'   => "pastas, frescas, secas, tapas, harinas",
+                'similar'   => "pastas, pastas-frescas-y-tapas, pastas-y-harinas, pastas-y-tapas, tapas-y-pastas-frescas, pastas-secas, levaduras, grasas, levaduras-y-grasas",
             ],
             [
                 'name'      => "Sin Gluten y Diet",
                 'slug'      => "sin-gluten-y-diet",
-                'similar'   => "sin, gluten, diet, dietéticos",
-            ],
-            [
-                'name'      => "Tecnología",
-                'slug'      => "tecnología",
-                'similar'   => "tecnología, telefonía, celular, audio, almacenamiento, gaming, impresoras, informática, películas, tv, video",
+                'similar'   => "sin-gluten-y-diet, sin-tacc, libre-de-gluten, orgánicos",
             ],
         ];
 
@@ -139,6 +135,7 @@ class CategorySeeder extends Seeder
                 'name'      => $category['name'],
                 'slug'      => $category['slug'],
                 'similar'   => $category['similar'],
+                'searchable' => (isset($category['searchable'])) ? $category['searchable'] : "off",
             ]);
         }
     }
