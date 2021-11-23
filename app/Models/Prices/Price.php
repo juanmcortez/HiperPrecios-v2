@@ -58,6 +58,42 @@ class Price extends Model
 
 
     /**
+     * Get the price field mutated
+     *
+     * @param  string  $value
+     * @return string
+     */
+    public function getPriceAttribute($value)
+    {
+        return ($value === null) ? number_format(0, 2) : number_format($value, 2);
+    }
+
+
+    /**
+     * Get the listPrice field mutated
+     *
+     * @param  string  $value
+     * @return string
+     */
+    public function getListPriceAttribute($value)
+    {
+        return ($value === null) ? number_format(0, 2) : number_format($value, 2);
+    }
+
+
+    /**
+     * Get the priceWithoutDiscount field mutated
+     *
+     * @param  string  $value
+     * @return string
+     */
+    public function getPriceWithoutDiscountAttribute($value)
+    {
+        return ($value === null) ? number_format(0, 2) : number_format($value, 2);
+    }
+
+
+    /**
      * Price - Product relationship
      *
      * @return void

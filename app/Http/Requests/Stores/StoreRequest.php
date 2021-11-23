@@ -29,6 +29,7 @@ class StoreRequest extends FormRequest
             'storeApiUrl'           => 'required|max:256',
             'enableApiScrapping'    => 'nullable|in:"on","off"',
             'isaVtexStore'          => 'nullable|in:"on","off"',
+            'imageUrl'              => 'nullable|file|image|dimensions:max_width=1024,max_height=1024,min_width=200,min_height=200'
         ];
     }
 
@@ -49,6 +50,9 @@ class StoreRequest extends FormRequest
             'storeApiUrl.max'           => 'The <strong>Store API Url</strong> field is too long.',
             'enableApiScrapping.in'     => 'The <strong>Get products and prices?</strong> can be checked or un-checked only.',
             'isaVtexStore.in'           => 'The <strong>Is a VTEX Store?</strong> can be checked or un-checked only.',
+            'imageUrl.file'             => 'The <strong>Store Image</strong> is not an uploaded file.',
+            'imageUrl.image'            => 'The <strong>Store Image</strong> needs to be: jpg, jpeg, png, bmp, gif, svg, or webp.',
+            'imageUrl.dimensions'       => 'The <strong>Store Image</strong> size needs to be: 1024px x 1024px max.'
         ];
     }
 }

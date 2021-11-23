@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use Database\Seeders\StoreSeeder;
 use Database\Seeders\ProductSeeder;
+use Database\Seeders\InternalExternalSeeder;
 use Database\Seeders\CategorySeeder;
 
 class DatabaseSeeder extends Seeder
@@ -18,9 +19,10 @@ class DatabaseSeeder extends Seeder
     {
         // Run all the seeds.
         $this->call([
-            StoreSeeder::class,         // Seed the stores.
-            CategorySeeder::class,      // Seed the product categories.
-            // ProductSeeder::class,      // Seed the product categories.
+            StoreSeeder::class,             // Seed the stores.
+            CategorySeeder::class,          // Seed the product categories.
+            // ProductSeeder::class,        // Seed the products.
+            // InternalExternalSeeder::class,  // Seed the categories relations.
         ]);
     }
 }

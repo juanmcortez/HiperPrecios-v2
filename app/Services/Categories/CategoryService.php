@@ -30,10 +30,10 @@ class CategoryService
      * @param $request
      * @return void
      */
-    public function add($request)
+    public function addUpdate($request)
     {
         // Store data if
-        $category = Category::firstOrCreate(
+        $category = Category::updateOrCreate(
             // Find the model if these fields exist
             [
                 'name' => $request->input('name'),

@@ -64,7 +64,7 @@ class CategoryController extends Controller
     public function store(CategoryRequest $request)
     {
         // Process the category
-        list($status, $message, $category) = $this->categoryService->add($request);
+        list($status, $message, $category) = $this->categoryService->addUpdate($request);
 
         // redirect
         return redirect()
@@ -115,7 +115,9 @@ class CategoryController extends Controller
      */
     public function update(CategoryRequest $request, Category $category)
     {
-        $category->update($request->toArray());
+        // $category->update($request->toArray());
+        list($status, $message, $category) = $this->categoryService->addUpdate($request);
+
         return redirect()
             ->route('categories.list')
             ->with(
