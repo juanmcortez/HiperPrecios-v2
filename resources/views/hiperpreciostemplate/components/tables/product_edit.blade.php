@@ -12,6 +12,11 @@
             </td>
             <td class="px-6 py-4 text-center align-middle whitespace-nowrap" colspan="7">
                 <ul class="flex flex-row">
+                    @empty($columnContents)
+                    <li class="inline-flex align-middle">
+                        <input type="text" class="px-3 pt-3" value="0.00" />
+                    </li>
+                    @else
                     @foreach ($columnContents->prices as $price)
                     <li class="inline-flex align-middle">
                         <img src="{{ secure_asset($price->store->imageUrl) }}"
@@ -20,6 +25,7 @@
                         <input type="text" class="px-3 pt-3" value="{{ $price->price }}" />
                     </li>
                     @endforeach
+                    @endempty
                 </ul>
             </td>
         </tr>
